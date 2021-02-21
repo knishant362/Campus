@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.subjects.SubjectCollectionFragment">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/white"
+        android:id="@+id/subjectDetailsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgDFacultyProfile" />
+
+    <ImageView
+        android:id="@+id/imgDSubjectProfile"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/background"
+        android:scaleType="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDSubjectName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/google_sans_bold"
+        android:text="Automation"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgDSubjectProfile" />
+
+    <TextView
+        android:id="@+id/txtDSubjectDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16dp"
+        android:text="Random bull shit go !!"
+        app:layout_constraintEnd_toEndOf="@+id/txtDSubjectName"
+        app:layout_constraintStart_toStartOf="@+id/txtDSubjectName"
+        app:layout_constraintTop_toBottomOf="@+id/txtDSubjectName" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Faculty"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/txtDSubjectDesc"
+        app:layout_constraintStart_toStartOf="@+id/txtDSubjectDesc"
+        app:layout_constraintTop_toBottomOf="@+id/txtDSubjectDesc" />
+
+    <TextView
+        android:id="@+id/txtDFacultyName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Prachi Dhankar"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDFacultyProfile"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/imgDFacultyProfile"
+        app:layout_constraintTop_toTopOf="@+id/imgDFacultyProfile" />
+
+    <ImageView
+        android:id="@+id/imgDFacultyProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_faculty"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

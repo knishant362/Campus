@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "790948719627",
+    "project_id": "campus-362",
+    "storage_bucket": "campus-362.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790948719627:android:b6dc8248dad67c7cb1ab0e",
+        "android_client_info": {
+          "package_name": "com.trendster.campus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790948719627-2abdok3chcqn6mgo3sbob8ngceg43p74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqLO5qeyUKWuuEquPAweDLic_7wzdCSlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790948719627-2abdok3chcqn6mgo3sbob8ngceg43p74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
