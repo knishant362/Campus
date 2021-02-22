@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.todkars.shimmer.ShimmerRecyclerView
 import com.trendster.campus.R
 import com.trendster.campus.adapters.SubjectsAdapter
 import com.trendster.campus.databinding.FragmentSubjectsBinding
@@ -23,21 +25,20 @@ class SubjectsFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var mAdapter : SubjectsAdapter
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: ShimmerRecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        auth = FirebaseAuth.getInstance()
         _binding = FragmentSubjectsBinding.inflate(inflater, container, false)
 
-        auth = FirebaseAuth.getInstance()
-        mAdapter =   SubjectsAdapter()
         recyclerView = binding.subjectsRecyclerView
-
+        mAdapter =   SubjectsAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = mAdapter
+        recyclerView.showShimmer()
 
         auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "subjects", "requiredDay") }
 
@@ -46,9 +47,14 @@ class SubjectsFragment : Fragment() {
 
             Log.d("MYlist", it.size.toString())
             mAdapter.setData(it)
+            recyclerView.hideShimmer()
             mAdapter.notifyDataSetChanged()
 
         })
+
+        binding.fabUpdateSubject.setOnClickListener {
+            findNavController().navigate(R.id.action_subjectsFragment_to_updateSubjectFragment)
+        }
 
         return binding.root
     }

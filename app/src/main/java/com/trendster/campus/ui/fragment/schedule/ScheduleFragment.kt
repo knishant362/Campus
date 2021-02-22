@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.todkars.shimmer.ShimmerRecyclerView
+import com.trendster.campus.R
 import com.trendster.campus.adapters.ScheduleAdapter
 import com.trendster.campus.databinding.FragmentScheduleBinding
 import com.trendster.campus.viewmodels.MainViewModel
@@ -22,7 +25,7 @@ class ScheduleFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private val mainViewModel: MainViewModel by activityViewModels()
     lateinit var mAdapter: ScheduleAdapter
-    lateinit var recyclerView: RecyclerView
+    lateinit var recyclerView: ShimmerRecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,21 +33,26 @@ class ScheduleFragment : Fragment() {
     ): View? {
 
         _binding = FragmentScheduleBinding.inflate(inflater, container, false)
-        auth = FirebaseAuth.getInstance()
         recyclerView = binding.ScheduleRecyclerView
         mAdapter = ScheduleAdapter()
-
-        auth.currentUser?.uid?.let { Log.d("FIREBASEUSER", it) }
-        auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "schedule", "requiredDay") }
-
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.showShimmer()
+
+        auth = FirebaseAuth.getInstance()
+        auth.currentUser?.uid?.let { Log.d("FIREBASEUSER", it) }
+        auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "schedule", "requiredDay") }
 
         mainViewModel.readSchedule.observe(viewLifecycleOwner, {myData ->
             Log.d("FIREBASEUSER", myData.size.toString())
             mAdapter.setData(myData)
+            recyclerView.hideShimmer()
             mAdapter.notifyDataSetChanged()
         })
+
+        binding.fabAddSch.setOnClickListener {
+            findNavController().navigate(R.id.action_scheduleFragment_to_updateScheduleFragment)
+        }
 
         return binding.root
     }

@@ -1,5 +1,6 @@
 package com.trendster.campus.ui.fragment.user.login
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.trendster.campus.R
 import com.trendster.campus.databinding.FragmentLoginBinding
 import com.trendster.campus.ui.MainActivity
+import com.trendster.campus.utils.CustomDialog
 
 class LoginFragment : Fragment() {
 
@@ -26,7 +28,6 @@ class LoginFragment : Fragment() {
     private lateinit var etPassword: EditText
     private lateinit var btnSignup: Button
     private lateinit var btnLogin: Button
-
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
@@ -43,7 +44,6 @@ class LoginFragment : Fragment() {
         btnSignup = binding.btnGoToSignup
 
         login()
-
         btnSignup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
