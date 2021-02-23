@@ -1,6 +1,5 @@
 package com.trendster.campus.utils
 
-
 const val DEFAULT_USER_BRANCH = "CSE"
 const val DEFAULT_USER_SEMESTER = "6"
 
@@ -9,6 +8,7 @@ const val USER_BRANCH = "userBranch"
 const val USER_SEMESTER = "userSemester"
 const val USER_UID = "userUID"
 const val USER_NAME = "userName"
+const val ACCESS_LEVEL = "accessLevel"
 
 /** Study Material Collection*/
 const val COLL_PDF_TITLE = "pdfTitle"
@@ -25,3 +25,7 @@ const val F_TEH = "timeEndHr"
 const val F_TEM = "timeEndMin"
 const val F_ROOM_N0 = "roomNo"
 
+/**Firebase Notifications*/
+const val BASE_URL = "https://fcm.googleapis.com"
+const val SERVER_KEY = "AAAAuCg3rAs:APA91bEx3nayTCU_GCbAXZFzHcGQgNBnyJzycFvJErNDrLJeGTLvID7lf_NvN6nIHyBfQSGFbM6bx6j4coAb048Wi5hjOrFFQchJPukoNdfqr9LDiBF0X60iEooGGUC3xz3wt1ONFfG0"
+const val CONTENT_TYPE = "application/json"

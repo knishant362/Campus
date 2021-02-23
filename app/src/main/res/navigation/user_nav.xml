@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -28,4 +31,13 @@
         android:name="com.trendster.campus.ui.fragment.user.info.InfoFragment"
         android:label="User Info"
         tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/forgotFragment"
+        android:name="com.trendster.campus.ui.fragment.user.forgot.ForgotFragment"
+        android:label="fragment_forgot"
+        tools:layout="@layout/fragment_forgot" >
+        <action
+            android:id="@+id/action_forgotFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

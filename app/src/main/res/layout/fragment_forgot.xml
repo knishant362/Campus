@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.user.forgot.ForgotFragment">
+
+
+    <TextView
+        android:id="@+id/txtReset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Reset Password"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtWarn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Enter the email associated with your account and we'll send an email with instructions to reset your password"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/txtReset"
+        app:layout_constraintStart_toStartOf="@+id/txtReset"
+        app:layout_constraintTop_toBottomOf="@+id/txtReset" />
+
+    <TextView
+        android:id="@+id/txtForgtemail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Email address"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/txtWarn"
+        app:layout_constraintStart_toStartOf="@+id/txtWarn"
+        app:layout_constraintTop_toBottomOf="@+id/txtWarn" />
+
+    <EditText
+        android:id="@+id/etForgotEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/txtForgtemail"
+        app:layout_constraintStart_toStartOf="@+id/txtForgtemail"
+        app:layout_constraintTop_toBottomOf="@+id/txtForgtemail" />
+
+    <Button
+        android:id="@+id/btnForgotPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Send Instructions"
+        app:layout_constraintEnd_toEndOf="@+id/etForgotEmail"
+        app:layout_constraintStart_toStartOf="@+id/etForgotEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etForgotEmail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

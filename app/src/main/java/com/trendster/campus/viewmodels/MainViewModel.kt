@@ -23,6 +23,9 @@ class MainViewModel(context: Context): ViewModel() {
     var pdfUploading = MutableLiveData<Boolean>()
     var syllabusData = MutableLiveData<List<DocumentSnapshot?>>()
 
+    private val _readAccessLevel = MutableLiveData<String>()
+    val readAccessLevel: LiveData<String>
+        get() = _readAccessLevel
 
     private val _readSchedule = MutableLiveData<List<DocumentSnapshot?>>()
     val readSchedule : LiveData<List<DocumentSnapshot?>>
@@ -36,19 +39,28 @@ class MainViewModel(context: Context): ViewModel() {
     val readUserProfile: LiveData<DocumentSnapshot?>
         get() = _readUserProfile
 
+    private val _readNotificationStatus = MutableLiveData<String>()
+    val readNotificationStatus: LiveData<String>
+        get() = _readNotificationStatus
 
+    private val _readNotifications = MutableLiveData<List<DocumentSnapshot?>>()
+    val readNotifications: LiveData<List<DocumentSnapshot?>>
+        get() = _readNotifications
+    
     /** User Activity stuff*/
     fun saveUserData(
-        userUID: String,
-        userName: String,
-        userBranch: String,
-        userSemester: String
+            userUID: String,
+            userName: String,
+            userBranch: String,
+            userSemester: String,
+            accessLevel: String
     ){
         val data = HashMap<String, String>()
         data[USER_UID] = userUID
         data[USER_NAME] = userName
         data[USER_BRANCH] = userBranch
         data[USER_SEMESTER] = userSemester
+        data[ACCESS_LEVEL] = accessLevel
 
         firestore.collection("Users").document(userUID)
             .set(data).addOnSuccessListener {
@@ -59,12 +71,16 @@ class MainViewModel(context: Context): ViewModel() {
     }
 
 
+
     fun loadRequest(userUID: String, type: String, requiredDay: String){
         firestore.collection("Users").document(userUID)
             .addSnapshotListener { value, error ->
                 val UID = value?.get(USER_UID)?.toString()
                 val userBranch = value?.get(USER_BRANCH).toString()
                 val userSemester = value?.get(USER_SEMESTER).toString()
+                val accessLevel = value?.get(ACCESS_LEVEL).toString()
+                _readAccessLevel.postValue(accessLevel)
+
 
                 when(type){
                     "schedule" -> {
@@ -86,6 +102,7 @@ class MainViewModel(context: Context): ViewModel() {
             .collection(userSemester).document("Schedule")
             .collection(requiredDay).get().addOnSuccessListener { data ->
                 val docs = data.documents
+                todayDay()
                 _readSchedule.postValue(docs)
                     Log.d("loadSchedule", docs.size.toString())
             }
@@ -104,11 +121,34 @@ class MainViewModel(context: Context): ViewModel() {
     private fun todayDay(): String {
         val today = Calendar.getInstance()
         val date = today.time
+        Log.d("myTime", date.toString())
+        Log.d("myTime", today.toString())
         val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
 
-        Log.d("TIMETABLE", day)
+        /**individual item */
+        val year = today.get(Calendar.YEAR)
+        val month = today.get(Calendar.MONTH)
+        val myday = today.get(Calendar.DAY_OF_MONTH)
+
+        val hour = today.get(Calendar.HOUR_OF_DAY)
+        val minute = today.get(Calendar.MINUTE)
+        Log.d("myTime11", myday.toString())
+        /**individual item */
 
         return day
+    }
+
+    fun getTimeAndDate(): HashMap<String, String> {
+        val today = Calendar.getInstance()
+        val instantMap: HashMap<String, String> = HashMap()
+
+        instantMap["year"] = today.get(Calendar.YEAR).toString()
+        instantMap["month"] = today.get(Calendar.MONTH).toString()
+        instantMap["day"] = today.get(Calendar.DAY_OF_MONTH).toString()
+        instantMap["hour"] = today.get(Calendar.HOUR_OF_DAY).toString()
+        instantMap["minute"] = today.get(Calendar.MINUTE).toString()
+
+        return instantMap
     }
 
     fun loadUserProfile(userUID: String){
@@ -131,12 +171,12 @@ class MainViewModel(context: Context): ViewModel() {
         data[USER_SEMESTER] = userSemester
 
         firestore.collection("Users").document(userUID)
-            .set(data).addOnSuccessListener {
+
+            .update(data as Map<String, Any>).addOnSuccessListener {
                 Log.d("saveUserData", userUID)
             }.addOnFailureListener{
                 Log.d("saveUserData", "failed")
             }
-
     }
 
     /** Admin Functions =*/
@@ -248,6 +288,32 @@ class MainViewModel(context: Context): ViewModel() {
                     pdfUploading.postValue(false)
                 }
 
+    }
+
+    fun saveNotifications(title: String, message: String) {
+
+        val myMap : HashMap<String, String> = HashMap()
+        val body : HashMap<String, String> = HashMap()
+        body["title"] = title
+        body["message"] = message
+        myMap.putAll(getTimeAndDate())
+        myMap.putAll(body)
+
+        Log.d("saveTime", message)
+        firestore.collection("Notifications").document(title)
+            .set(myMap).addOnSuccessListener {
+                _readNotificationStatus.postValue("true")
+            }.addOnFailureListener {
+                _readNotificationStatus.postValue(it.message.toString())
+            }
+    }
+
+    fun loadNotifications(){
+        firestore.collection("Notifications")
+            .addSnapshotListener { value, error -> 
+                val docs = value?.documents
+                _readNotifications.postValue(docs!!)
+            }
     }
 
 }

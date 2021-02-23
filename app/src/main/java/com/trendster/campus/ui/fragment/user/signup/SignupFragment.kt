@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.trendster.campus.R
 import com.trendster.campus.databinding.FragmentSignupBinding
 import com.trendster.campus.ui.MainActivity
 import com.trendster.campus.viewmodels.MainViewModel
@@ -103,7 +102,8 @@ class SignupFragment : Fragment() {
         userSemester: String
     ) {
         if (user != null){
-            mainViewModel.saveUserData(user!!.uid, userName, userBranch, userSemester)
+            val accessLevel = "user"
+            mainViewModel.saveUserData(user!!.uid, userName, userBranch, userSemester, accessLevel)
             startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()
         }

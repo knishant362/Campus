@@ -70,7 +70,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="#CCEDFF"
+        android:elevation="6dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,64 +84,41 @@
 
 
             <TextView
-                android:id="@+id/txtWSubject"
+                android:id="@+id/txtNotifDesc"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:maxLines="2"
-                android:text="Data Analysis uewrfwewrwererwerwsing Rerrrrrrrr"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imgWFaculty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="@+id/txtWSubject"
-                app:layout_constraintTop_toBottomOf="@+id/txtWSubject"
-                app:srcCompat="@drawable/ic_faculty" />
-
-            <TextView
-                android:id="@+id/txtWFaculty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Prachi Dhankar"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imgWFaculty"
-                app:layout_constraintStart_toEndOf="@+id/imgWFaculty"
-                app:layout_constraintTop_toTopOf="@+id/imgWFaculty" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
+                android:text="OneSignal annouces 500% growth, delivering 2 trillion services anulaay"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imgWFaculty"
-                app:layout_constraintTop_toBottomOf="@+id/imgWFaculty"
-                app:srcCompat="@drawable/ic_venue" />
+                app:layout_constraintEnd_toEndOf="@+id/txtNotifTitle"
+                app:layout_constraintStart_toStartOf="@+id/txtNotifTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtNotifTitle" />
 
             <TextView
-                android:id="@+id/txtWVenue"
+                android:id="@+id/txtNotifTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="We're blasting off !"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+            <ImageView
+                android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Room 216, Cse"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView3" />
-
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_notification_list"
+                app:tint="@color/light_blue_600" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

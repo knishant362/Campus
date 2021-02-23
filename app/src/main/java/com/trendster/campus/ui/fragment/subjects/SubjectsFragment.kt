@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.todkars.shimmer.ShimmerRecyclerView
 import com.trendster.campus.R
@@ -26,6 +27,7 @@ class SubjectsFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var mAdapter : SubjectsAdapter
     private lateinit var recyclerView: ShimmerRecyclerView
+    private lateinit var fabUpdateSubject: FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +35,18 @@ class SubjectsFragment : Fragment() {
     ): View? {
         auth = FirebaseAuth.getInstance()
         _binding = FragmentSubjectsBinding.inflate(inflater, container, false)
-
+        fabUpdateSubject = binding.fabUpdateSubject
         recyclerView = binding.subjectsRecyclerView
         mAdapter =   SubjectsAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = mAdapter
         recyclerView.showShimmer()
+
+        mainViewModel.readAccessLevel.observe(viewLifecycleOwner, {access ->
+            if (access == "admin"){
+                fabUpdateSubject.visibility = View.VISIBLE
+            }
+        })
 
         auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "subjects", "requiredDay") }
 
@@ -52,7 +60,7 @@ class SubjectsFragment : Fragment() {
 
         })
 
-        binding.fabUpdateSubject.setOnClickListener {
+        fabUpdateSubject.setOnClickListener {
             findNavController().navigate(R.id.action_subjectsFragment_to_updateSubjectFragment)
         }
 

@@ -42,7 +42,11 @@
         android:id="@+id/notificationsFragment"
         android:name="com.trendster.campus.ui.fragment.notifications.NotificationsFragment"
         android:label="Notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_notificationActivity"
+            app:destination="@id/notificationActivity" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.trendster.campus.ui.fragment.about.AboutFragment"
@@ -98,4 +102,9 @@
         android:name="com.trendster.campus.ui.fragment.subjects.update.UpdateSubjectFragment"
         android:label="UpdateSubjectFragment"
         tools:layout="@layout/fragment_update_subject"/>
+    <activity
+        android:id="@+id/notificationActivity"
+        android:name="com.trendster.campus.ui.fragment.notifications.NotificationActivity"
+        android:label="activity_notification"
+        tools:layout="@layout/activity_notification" />
 </navigation>

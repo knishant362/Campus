@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.todkars.shimmer.ShimmerRecyclerView
 import com.trendster.campus.R
@@ -26,6 +27,7 @@ class ScheduleFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
     lateinit var mAdapter: ScheduleAdapter
     lateinit var recyclerView: ShimmerRecyclerView
+    lateinit var fabAddSch : FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,10 +40,17 @@ class ScheduleFragment : Fragment() {
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.showShimmer()
+        fabAddSch = binding.fabAddSch
 
         auth = FirebaseAuth.getInstance()
         auth.currentUser?.uid?.let { Log.d("FIREBASEUSER", it) }
         auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "schedule", "requiredDay") }
+
+        mainViewModel.readAccessLevel.observe(viewLifecycleOwner, { access ->
+            if (access =="admin") {
+                fabAddSch.visibility = View.VISIBLE
+            }
+        })
 
         mainViewModel.readSchedule.observe(viewLifecycleOwner, {myData ->
             Log.d("FIREBASEUSER", myData.size.toString())
@@ -50,7 +59,9 @@ class ScheduleFragment : Fragment() {
             mAdapter.notifyDataSetChanged()
         })
 
-        binding.fabAddSch.setOnClickListener {
+
+
+        fabAddSch.setOnClickListener {
             findNavController().navigate(R.id.action_scheduleFragment_to_updateScheduleFragment)
         }
 

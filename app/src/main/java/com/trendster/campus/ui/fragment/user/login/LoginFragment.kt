@@ -1,6 +1,5 @@
 package com.trendster.campus.ui.fragment.user.login
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.trendster.campus.R
 import com.trendster.campus.databinding.FragmentLoginBinding
 import com.trendster.campus.ui.MainActivity
-import com.trendster.campus.utils.CustomDialog
 
 class LoginFragment : Fragment() {
 
@@ -28,7 +27,16 @@ class LoginFragment : Fragment() {
     private lateinit var etPassword: EditText
     private lateinit var btnSignup: Button
     private lateinit var btnLogin: Button
+    private lateinit var txtForgotPass: TextView
     private lateinit var auth: FirebaseAuth
+
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null){
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            activity?.finish()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,10 +50,14 @@ class LoginFragment : Fragment() {
         etPassword = binding.etLoginPassword
         btnLogin = binding.btnLogin
         btnSignup = binding.btnGoToSignup
+        txtForgotPass = binding.txtForgotPassword
 
         login()
         btnSignup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+        }
+        txtForgotPass.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_forgotFragment)
         }
 
 
