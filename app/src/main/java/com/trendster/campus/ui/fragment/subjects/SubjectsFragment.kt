@@ -9,14 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.todkars.shimmer.ShimmerRecyclerView
 import com.trendster.campus.R
 import com.trendster.campus.adapters.SubjectsAdapter
 import com.trendster.campus.databinding.FragmentSubjectsBinding
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
 class SubjectsFragment : Fragment() {
 

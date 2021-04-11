@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.firebase.auth.FirebaseAuth
-import com.trendster.campus.R
 import com.trendster.campus.adapters.ScheduleAdapter
 import com.trendster.campus.databinding.FragmentWeekScheduleBinding
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
 class WeekScheduleFragment : Fragment() {
 

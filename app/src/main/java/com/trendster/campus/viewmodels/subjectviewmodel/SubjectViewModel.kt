@@ -1,4 +1,4 @@
-package com.trendster.campus.viewmodels
+package com.trendster.campus.viewmodels.subjectviewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.trendster.campus.R
-import com.trendster.campus.viewmodels.SubjectViewModel
+import com.trendster.campus.viewmodels.subjectviewmodel.SubjectViewModel
 
 class SubjectDetailsActivity : AppCompatActivity() {
 

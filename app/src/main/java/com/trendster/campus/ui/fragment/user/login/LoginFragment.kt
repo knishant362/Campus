@@ -59,6 +59,9 @@ class LoginFragment : Fragment() {
         txtForgotPass.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_forgotFragment)
         }
+        binding.btnfacultyLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_facultyLoginFragment)
+        }
 
 
         return binding.root

@@ -52,6 +52,19 @@
         android:ems="10"
         android:hint="Semester"
         android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/etSignupRoll"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etSignupRoll"
+        app:layout_constraintTop_toBottomOf="@+id/etSignupRoll" />
+
+    <EditText
+        android:id="@+id/etSignupRoll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Roll No"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/etSignupBranch"
         app:layout_constraintStart_toStartOf="@+id/etSignupBranch"
         app:layout_constraintTop_toBottomOf="@+id/etSignupBranch" />

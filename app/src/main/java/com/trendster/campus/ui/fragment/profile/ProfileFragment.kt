@@ -15,7 +15,7 @@ import com.trendster.campus.ui.UserActivity
 import com.trendster.campus.utils.USER_BRANCH
 import com.trendster.campus.utils.USER_NAME
 import com.trendster.campus.utils.USER_SEMESTER
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
 class ProfileFragment : Fragment() {
 

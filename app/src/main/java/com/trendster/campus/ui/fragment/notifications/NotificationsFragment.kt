@@ -5,17 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.todkars.shimmer.ShimmerRecyclerView
 import com.trendster.campus.R
 import com.trendster.campus.adapters.NotificationAdapter
-import com.trendster.campus.databinding.FragmentNoticeBinding
 import com.trendster.campus.databinding.FragmentNotificationsBinding
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
 class NotificationsFragment : Fragment() {
 

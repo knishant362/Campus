@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.faculty.FacultyFragment">
+
+
+    <EditText
+        android:id="@+id/etFLoginEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etFLoginPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/etFLoginEmail"
+        app:layout_constraintStart_toStartOf="@+id/etFLoginEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etFLoginEmail" />
+
+    <Button
+        android:id="@+id/btnGoToSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Faculty Signup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Forgot Password ?"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnfacultyLogin"
+        app:layout_constraintStart_toStartOf="@+id/btnfacultyLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnfacultyLogin" />
+
+    <Button
+        android:id="@+id/btnfacultyLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Faculty Login"
+        app:layout_constraintEnd_toEndOf="@+id/etFLoginPassword"
+        app:layout_constraintStart_toStartOf="@+id/etFLoginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etFLoginPassword" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

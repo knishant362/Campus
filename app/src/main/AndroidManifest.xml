@@ -13,16 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Campus">
-        <service android:name=".services.FirebaseService"
+        <activity android:name=".ui.fragment.subjects.update.ViewPdfActivity"></activity>
+        <activity android:name=".ui.faculty.FacultyActivity"></activity>
+
+        <service
+            android:name=".services.FirebaseService"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-        <activity android:name=".ui.fragment.notifications.NotificationActivity">
 
-        </activity>
+        <activity android:name=".ui.fragment.notifications.NotificationActivity" />
         <activity android:name=".ui.fragment.subjects.SubjectDetailsActivity" />
         <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.UserActivity">
@@ -35,8 +38,8 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Campus.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Campus.NoActionBar" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

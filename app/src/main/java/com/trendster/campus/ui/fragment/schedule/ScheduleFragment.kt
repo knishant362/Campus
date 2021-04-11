@@ -14,9 +14,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.todkars.shimmer.ShimmerRecyclerView
 import com.trendster.campus.R
+import com.trendster.campus.adapters.AttendanceAdapter
 import com.trendster.campus.adapters.ScheduleAdapter
 import com.trendster.campus.databinding.FragmentScheduleBinding
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
 class ScheduleFragment : Fragment() {
 
@@ -29,12 +30,23 @@ class ScheduleFragment : Fragment() {
     lateinit var recyclerView: ShimmerRecyclerView
     lateinit var fabAddSch : FloatingActionButton
 
+    lateinit var attendanceAdapter: AttendanceAdapter
+    lateinit var attendanceRecyclerView: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentScheduleBinding.inflate(inflater, container, false)
+        /** Attendance */
+        attendanceAdapter = AttendanceAdapter()
+        attendanceRecyclerView = binding.attendanceRecyclerView
+        attendanceRecyclerView.adapter = attendanceAdapter
+        attendanceRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+
+        /** Schedule */
         recyclerView = binding.ScheduleRecyclerView
         mAdapter = ScheduleAdapter()
         recyclerView.adapter = mAdapter
@@ -52,14 +64,19 @@ class ScheduleFragment : Fragment() {
             }
         })
 
+        auth.currentUser?.let { mainViewModel.loadAttendance(it.uid) }
+        mainViewModel.readAttendance.observe(viewLifecycleOwner, {myData ->
+            attendanceAdapter.setData(myData)
+            attendanceAdapter.notifyDataSetChanged()
+            Log.d("AttAdapter", myData.size.toString())
+        })
+
         mainViewModel.readSchedule.observe(viewLifecycleOwner, {myData ->
             Log.d("FIREBASEUSER", myData.size.toString())
             mAdapter.setData(myData)
             recyclerView.hideShimmer()
             mAdapter.notifyDataSetChanged()
         })
-
-
 
         fabAddSch.setOnClickListener {
             findNavController().navigate(R.id.action_scheduleFragment_to_updateScheduleFragment)

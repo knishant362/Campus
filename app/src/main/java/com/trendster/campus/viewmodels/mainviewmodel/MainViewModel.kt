@@ -1,10 +1,8 @@
-package com.trendster.campus.viewmodels
+package com.trendster.campus.viewmodels.mainviewmodel
 
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import android.widget.EditText
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,11 +19,14 @@ class MainViewModel(context: Context): ViewModel() {
     private val firestore = FirebaseFirestore.getInstance()
     private val storageReference = FirebaseStorage.getInstance().reference
     var pdfUploading = MutableLiveData<Boolean>()
-    var syllabusData = MutableLiveData<List<DocumentSnapshot?>>()
 
     private val _readAccessLevel = MutableLiveData<String>()
     val readAccessLevel: LiveData<String>
         get() = _readAccessLevel
+
+    private val _readAttendance = MutableLiveData<List<DocumentSnapshot?>>()
+    val readAttendance: LiveData<List<DocumentSnapshot?>>
+        get() = _readAttendance
 
     private val _readSchedule = MutableLiveData<List<DocumentSnapshot?>>()
     val readSchedule : LiveData<List<DocumentSnapshot?>>
@@ -46,29 +47,6 @@ class MainViewModel(context: Context): ViewModel() {
     private val _readNotifications = MutableLiveData<List<DocumentSnapshot?>>()
     val readNotifications: LiveData<List<DocumentSnapshot?>>
         get() = _readNotifications
-    
-    /** User Activity stuff*/
-    fun saveUserData(
-            userUID: String,
-            userName: String,
-            userBranch: String,
-            userSemester: String,
-            accessLevel: String
-    ){
-        val data = HashMap<String, String>()
-        data[USER_UID] = userUID
-        data[USER_NAME] = userName
-        data[USER_BRANCH] = userBranch
-        data[USER_SEMESTER] = userSemester
-        data[ACCESS_LEVEL] = accessLevel
-
-        firestore.collection("Users").document(userUID)
-            .set(data).addOnSuccessListener {
-                Log.d("saveUserData", userUID)
-            }.addOnFailureListener{
-                Log.d("saveUserData", "failed")
-            }
-    }
 
 
 
@@ -150,6 +128,18 @@ class MainViewModel(context: Context): ViewModel() {
 
         return instantMap
     }
+
+    /**Attendance Section*/
+
+    fun loadAttendance(userUID: String){
+        firestore.collection("Users").document(userUID)
+            .collection("Attendance").addSnapshotListener { value, error ->
+                val docs = value?.documents
+                _readAttendance.postValue(docs!!)
+            }
+    }
+
+
 
     fun loadUserProfile(userUID: String){
         firestore.collection("Users").document(userUID)
@@ -233,14 +223,24 @@ class MainViewModel(context: Context): ViewModel() {
 
     ) {
 
-        val reference1 = storageReference.child("pdf" + pdfName + "-" + System.currentTimeMillis() + ".pdf")
+        val reference1 = storageReference
+                .child("pdf" + pdfName + "-" + System.currentTimeMillis() + ".pdf")
         pdfData?.let { reference1.putFile(it) }?.addOnSuccessListener { task ->
 
             val uriTask = task.storage.downloadUrl
             while (!uriTask.isComplete);
 
             val uri = uriTask.result
-            uploadData(fileTitle, pdfName, uri.toString(), pdfDesc, branchChip, semesterChip, subjectName, materialCategory)
+            uploadData(
+                    fileTitle,
+                    pdfName,
+                    uri.toString(),
+                    pdfDesc,
+                    branchChip,
+                    semesterChip,
+                    subjectName,
+                    materialCategory
+            )
 
         }?.addOnFailureListener {
             pdfUploading.postValue(false)
@@ -316,4 +316,13 @@ class MainViewModel(context: Context): ViewModel() {
             }
     }
 
+    fun fetchStudents(){
+
+        firestore.collection("Users")
+                .whereEqualTo("userBranch", "CSE")
+                .whereEqualTo("userSemester", "6")
+                .get().addOnSuccessListener {
+                    Log.d("teacherData", it.documents.size.toString())
+                }
+    }
 }

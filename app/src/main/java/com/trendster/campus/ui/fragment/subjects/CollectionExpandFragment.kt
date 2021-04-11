@@ -1,4 +1,4 @@
-package com.trendster.campus.ui.fragment.subjects
+  package com.trendster.campus.ui.fragment.subjects
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,10 +11,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.trendster.campus.R
 import com.trendster.campus.adapters.SubjectExpandAdapter
 import com.trendster.campus.databinding.FragmentCollectionExpandBinding
-import com.trendster.campus.viewmodels.SubjectViewModel
+import com.trendster.campus.viewmodels.subjectviewmodel.SubjectViewModel
 
 class CollectionExpandFragment : Fragment() {
 
@@ -33,7 +32,7 @@ class CollectionExpandFragment : Fragment() {
         _binding = FragmentCollectionExpandBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
         val category = args.collCategory
-        mAdapter = SubjectExpandAdapter()
+        mAdapter = SubjectExpandAdapter(requireContext())
         recyclerView = binding.expandRecyclerView
 
         Toast.makeText(requireContext(), category, Toast.LENGTH_SHORT).show()

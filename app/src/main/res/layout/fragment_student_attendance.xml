@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ui.faculty.StudentAttendanceFragment">
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+
+            <Button
+                android:id="@+id/btnUpdateAttendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:text="Update"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/txtTotalClass"
+                app:layout_constraintStart_toStartOf="@+id/txtTotalClass"
+                app:layout_constraintTop_toBottomOf="@+id/txtTotalClass" />
+
+    <TextView
+        android:id="@+id/txtSubjectTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Data Analysis using R"
+        android:textColor="@color/light_blue_900"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtPresentClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/txtPres"
+                app:layout_constraintStart_toStartOf="@+id/txtPres"
+                app:layout_constraintTop_toBottomOf="@+id/txtPres" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btnPdecrease"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="-"
+                app:chipCornerRadius="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtPresentClass"
+                app:layout_constraintEnd_toStartOf="@+id/txtPres"
+                app:layout_constraintTop_toTopOf="@+id/txtPres" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btnPincrease"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="+"
+                app:chipCornerRadius="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtPresentClass"
+                app:layout_constraintStart_toEndOf="@+id/txtPres"
+                app:layout_constraintTop_toTopOf="@+id/txtPres" />
+
+    <TextView
+        android:id="@+id/txtPres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Present :"
+        app:layout_constraintEnd_toEndOf="@+id/txtSubjectTitle"
+        app:layout_constraintStart_toStartOf="@+id/txtSubjectTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtStuRoll" />
+
+            <TextView
+                android:id="@+id/txtTotalTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Total :"
+                app:layout_constraintEnd_toEndOf="@+id/txtPres"
+                app:layout_constraintStart_toStartOf="@+id/txtPres"
+                app:layout_constraintTop_toBottomOf="@+id/txtPresentClass" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btnTincrease"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="+"
+                app:chipCornerRadius="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtTotalClass"
+                app:layout_constraintStart_toEndOf="@+id/txtTotalTitle"
+                app:layout_constraintTop_toTopOf="@+id/txtTotalTitle" />
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btnTdecrease"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="-"
+                app:chipCornerRadius="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtTotalClass"
+                app:layout_constraintEnd_toStartOf="@+id/txtTotalTitle"
+                app:layout_constraintTop_toTopOf="@+id/txtTotalTitle" />
+
+            <TextView
+                android:id="@+id/txtTotalClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/txtTotalTitle"
+                app:layout_constraintStart_toStartOf="@+id/txtTotalTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtTotalTitle" />
+
+            <TextView
+                android:id="@+id/txtStuRoll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="182009"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/txtStudentNme"
+                app:layout_constraintStart_toStartOf="@+id/txtStudentNme"
+                app:layout_constraintTop_toBottomOf="@+id/txtStudentNme" />
+
+    <TextView
+        android:id="@+id/txtStudentNme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nishant Kumar"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/imgStudentPhoto"
+        app:layout_constraintStart_toStartOf="@+id/imgStudentPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/imgStudentPhoto" />
+
+    <ImageView
+        android:id="@+id/imgStudentPhoto"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintEnd_toEndOf="@+id/txtSubjectTitle"
+        app:layout_constraintStart_toStartOf="@+id/txtSubjectTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtSubjectTitle" />
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--    </com.google.android.material.card.MaterialCardView>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

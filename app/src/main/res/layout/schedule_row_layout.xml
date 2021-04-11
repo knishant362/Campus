@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/secndfr"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="6dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/txtTSH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans"
         android:text="09"
-        android:textColor="@color/myBlue"
+        android:textColor="@color/light_blue_600"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView2"
@@ -25,9 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:fontFamily="@font/open_sans"
         android:text="AM"
-        android:textColor="@color/myBlue"
+        android:textColor="@color/light_blue_600"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/txtTSM"
@@ -39,9 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:fontFamily="@font/open_sans"
         android:text="50"
-        android:textColor="@color/myBlue"
+        android:textColor="@color/light_blue_600"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/txtCln"
@@ -53,25 +49,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:fontFamily="@font/open_sans"
         android:text=":"
-        android:textColor="@color/myBlue"
+        android:textColor="@color/light_blue_600"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/txtTSH"
         app:layout_constraintStart_toEndOf="@+id/txtTSH"
         app:layout_constraintTop_toTopOf="@+id/txtTSH" />
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/materialCardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#CCEDFF"
         app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +86,7 @@
                 android:maxLines="2"
                 android:text="Data Analysis uewrfwewrwererwerwsing Rerrrrrrrr"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +121,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imgWFaculty"
                 app:layout_constraintTop_toBottomOf="@+id/imgWFaculty"
-                app:srcCompat="@drawable/ic_venue" />
+                app:srcCompat="@drawable/ic_venue"
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/txtWVenue"
@@ -145,6 +139,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

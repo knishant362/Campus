@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_loginFragment_to_forgotFragment"
             app:destination="@id/forgotFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_facultyLoginFragment"
+            app:destination="@id/facultyLoginFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -39,5 +43,30 @@
         <action
             android:id="@+id/action_forgotFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_forgotFragment_to_facultyLoginFragment"
+            app:destination="@id/facultyLoginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/facultyLoginFragment"
+        android:name="com.trendster.campus.ui.faculty.FacultyLoginFragment"
+        android:label="FacultyLoginFragment"
+        tools:layout="@layout/fragment_faculty_login">
+        <action
+            android:id="@+id/action_facultyLoginFragment_to_facultySignupFragment"
+            app:destination="@id/facultySignupFragment" />
+        <action
+            android:id="@+id/action_facultyLoginFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facultySignupFragment"
+        android:name="com.trendster.campus.ui.faculty.FacultySignupFragment"
+        android:label="fragment_faculty_signup"
+        tools:layout="@layout/fragment_faculty_signup" >
+        <action
+            android:id="@+id/action_facultySignupFragment_to_facultyLoginFragment"
+            app:destination="@id/facultyLoginFragment" />
+    </fragment>
+
 </navigation>

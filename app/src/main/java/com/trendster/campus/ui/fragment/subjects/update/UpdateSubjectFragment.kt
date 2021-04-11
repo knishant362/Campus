@@ -15,7 +15,7 @@ import android.widget.*
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
 import com.trendster.campus.databinding.FragmentUpdateSubjectBinding
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 import java.io.File
 
 class UpdateSubjectFragment : Fragment() {

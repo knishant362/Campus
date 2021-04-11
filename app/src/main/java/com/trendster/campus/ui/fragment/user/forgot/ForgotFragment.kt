@@ -55,7 +55,8 @@ class ForgotFragment : Fragment() {
                             "Instructions has been sent to entered Email",
                             Toast.LENGTH_LONG)
                             .show()
-                        findNavController().navigate(R.id.action_forgotFragment_to_loginFragment)
+//                        findNavController().navigate(R.id.action_forgotFragment_to_loginFragment)
+                        findNavController().navigateUp()
                     }.addOnFailureListener { info ->
                         Toast.makeText(requireContext(),
                             info.message,

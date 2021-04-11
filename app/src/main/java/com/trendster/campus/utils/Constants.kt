@@ -7,8 +7,12 @@ const val DEFAULT_USER_SEMESTER = "6"
 const val USER_BRANCH = "userBranch"
 const val USER_SEMESTER = "userSemester"
 const val USER_UID = "userUID"
+const val USER_ROLL_NO = "rollNo"
 const val USER_NAME = "userName"
 const val ACCESS_LEVEL = "accessLevel"
+const val CLASS_PRESENT = "present"
+const val CLASS_TOTAL = "total"
+
 
 /** Study Material Collection*/
 const val COLL_PDF_TITLE = "pdfTitle"

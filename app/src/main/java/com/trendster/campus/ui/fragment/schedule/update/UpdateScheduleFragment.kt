@@ -12,9 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.trendster.campus.R
 import com.trendster.campus.databinding.FragmentUpdateScheduleBinding
-import com.trendster.campus.utils.DEFAULT_USER_BRANCH
-import com.trendster.campus.utils.DEFAULT_USER_SEMESTER
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
 class UpdateScheduleFragment : Fragment() {
 

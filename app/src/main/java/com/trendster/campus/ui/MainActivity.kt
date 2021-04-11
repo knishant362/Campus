@@ -1,13 +1,9 @@
 package com.trendster.campus.ui
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -21,8 +17,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import com.trendster.campus.R
 import com.trendster.campus.databinding.ActivityMainBinding
-import com.trendster.campus.viewmodels.MainViewModel
-import com.trendster.campus.viewmodels.MainViewModelFactory
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.trendster.campus.adapters.SubjectDetailAdapter
 import com.trendster.campus.databinding.FragmentSubjectCollectionBinding
-import com.trendster.campus.viewmodels.SubjectViewModel
+import com.trendster.campus.viewmodels.subjectviewmodel.SubjectViewModel
 
 class SubjectCollectionFragment : Fragment() {
 

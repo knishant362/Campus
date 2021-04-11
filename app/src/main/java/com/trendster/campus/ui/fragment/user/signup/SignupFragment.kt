@@ -15,7 +15,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.trendster.campus.databinding.FragmentSignupBinding
 import com.trendster.campus.ui.MainActivity
-import com.trendster.campus.viewmodels.MainViewModel
+import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
+import com.trendster.campus.viewmodels.userviewmodel.UserViewModel
 
 class SignupFragment : Fragment() {
 
@@ -25,12 +26,13 @@ class SignupFragment : Fragment() {
     private lateinit var etEmail : EditText
     private lateinit var etName : EditText
     private lateinit var etBranch: EditText
+    private lateinit var etRollNo: EditText
     private lateinit var etSemester: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnSignup: Button
 
     private lateinit var auth: FirebaseAuth
-    private val mainViewModel: MainViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,17 +44,18 @@ class SignupFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         etEmail = binding.etSignupEmail
         etName = binding.etSignupName
+        etRollNo = binding.etSignupRoll
         etBranch = binding.etSignupBranch
         etSemester = binding.etSignupSem
         etPassword = binding.etPassword
         btnSignup = binding.btnSignup
 
-        signin()
+        signUp()
 
         return binding.root
     }
 
-    private fun signin() {
+    private fun signUp() {
         btnSignup.setOnClickListener {
             when{
                 etEmail.text.isEmpty() -> {
@@ -62,6 +65,9 @@ class SignupFragment : Fragment() {
                 etName.text.isEmpty() -> {
                     etName.error = "Fill this"
                     return@setOnClickListener
+                }
+                etRollNo.text.isEmpty() -> {
+                    etRollNo.error = "Fill this"
                 }
                 etBranch.text.isEmpty() -> {
                     etBranch.error = "Fill this"
@@ -79,7 +85,7 @@ class SignupFragment : Fragment() {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("SIGNUP", "createUserWithEmail:success")
                                 val user = auth.currentUser
-                                updateUI(user,etName.text.toString(),etBranch.text.toString(),etSemester.text.toString())
+                                updateUI(user,etName.text.toString(), etRollNo.text.toString(),etBranch.text.toString(),etSemester.text.toString())
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w("SIGNUP", "createUserWithEmail:failure", task.exception)
@@ -98,12 +104,13 @@ class SignupFragment : Fragment() {
     private fun updateUI(
         user: FirebaseUser?,
         userName: String,
+        userRollNo: String,
         userBranch: String,
         userSemester: String
     ) {
         if (user != null){
             val accessLevel = "user"
-            mainViewModel.saveUserData(user!!.uid, userName, userBranch, userSemester, accessLevel)
+            userViewModel.saveUserData(user!!.uid, userName, userRollNo, userBranch, userSemester, accessLevel)
             startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()
         }

@@ -1,4 +1,4 @@
-package com.trendster.campus.viewmodels
+package com.trendster.campus.viewmodels.mainviewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
