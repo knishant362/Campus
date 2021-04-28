@@ -4,28 +4,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentSnapshot
 import com.trendster.campus.R
-import com.trendster.campus.databinding.FacultyRowLayoutBinding
 import com.trendster.campus.databinding.StudentRowLayoutBinding
 import com.trendster.campus.models.StudentModel
-import com.trendster.campus.ui.faculty.FacultyFragmentDirections
-import com.trendster.campus.ui.faculty.StudentsFragmentDirections
+import com.trendster.campus.ui.faculty.attendance.StudentsFragmentDirections
 import com.trendster.campus.utils.*
 
-class StudentListAdapter : RecyclerView.Adapter<StudentListAdapter.MyViewHolder>()  {
+class StudentListAdapter : RecyclerView.Adapter<StudentListAdapter.MyViewHolder>() {
 
     var studentList = mutableListOf<DocumentSnapshot?>()
     var subjectName = "Demo"
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = parent.context.getSystemService(LayoutInflater::class.java)
-                .inflate(R.layout.student_row_layout, parent, false)
+            .inflate(R.layout.student_row_layout, parent, false)
         return MyViewHolder(binding)
     }
 
@@ -59,10 +56,9 @@ class StudentListAdapter : RecyclerView.Adapter<StudentListAdapter.MyViewHolder>
         return studentList.size
     }
 
-    fun setData(newData: List<DocumentSnapshot?>, thisSubject: String){
+    fun setData(newData: List<DocumentSnapshot?>, thisSubject: String) {
         this.studentList = newData as MutableList<DocumentSnapshot?>
         subjectName = thisSubject
         Log.d("SubjectExtend", newData.size.toString())
     }
-
 }

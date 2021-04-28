@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.user.signup.SignupFragment">
 
     <EditText
@@ -14,8 +14,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Email"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,36 +26,50 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Name"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/etSignupEmail"
         app:layout_constraintStart_toStartOf="@+id/etSignupEmail"
         app:layout_constraintTop_toBottomOf="@+id/etSignupEmail" />
 
-    <EditText
-        android:id="@+id/etSignupBranch"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputBranchLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Branch"
-        app:layout_constraintEnd_toEndOf="@+id/etSignupName"
-        app:layout_constraintStart_toStartOf="@+id/etSignupName"
-        app:layout_constraintTop_toBottomOf="@+id/etSignupName" />
-
-    <EditText
-        android:id="@+id/etSignupSem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Semester"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/etSignupRoll"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etSignupRoll"
-        app:layout_constraintTop_toBottomOf="@+id/etSignupRoll" />
+        app:layout_constraintTop_toBottomOf="@+id/etSignupRoll">
+
+        <AutoCompleteTextView
+            android:id="@+id/inputBranch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Branch"
+            android:inputType="none"
+            android:text="Select a Branch" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputSemesterLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputBranchLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputBranchLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputBranchLayout">
+
+        <AutoCompleteTextView
+            android:id="@+id/inputSemester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Semester"
+            android:inputType="none"
+            android:text="Select a Semester" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/etSignupRoll"
@@ -65,9 +79,9 @@
         android:ems="10"
         android:hint="Roll No"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/etSignupBranch"
-        app:layout_constraintStart_toStartOf="@+id/etSignupBranch"
-        app:layout_constraintTop_toBottomOf="@+id/etSignupBranch" />
+        app:layout_constraintEnd_toEndOf="@+id/etSignupName"
+        app:layout_constraintStart_toStartOf="@+id/etSignupName"
+        app:layout_constraintTop_toBottomOf="@+id/etSignupName" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -77,18 +91,20 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/etSignupSem"
-        app:layout_constraintStart_toStartOf="@+id/etSignupSem"
-        app:layout_constraintTop_toBottomOf="@+id/etSignupSem" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputSemesterLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputSemesterLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputSemesterLayout" />
 
     <Button
         android:id="@+id/btnSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/light_blue_600"
         android:text="Signup"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etPassword"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintStart_toStartOf="@+id/etPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

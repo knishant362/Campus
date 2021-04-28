@@ -13,13 +13,13 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.MyViewHolde
 
     private var notificationsList = mutableListOf<DocumentSnapshot?>()
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = parent.context.getSystemService(LayoutInflater::class.java)
             .inflate(R.layout.notification_row_layout, parent, false)
 
-        return  MyViewHolder(binding)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -27,14 +27,13 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.MyViewHolde
         val data = notificationsList[position]?.data
         NotificationRowLayoutBinding.bind(holder.itemView).apply {
 
-//            txtAMPM.text = data?.get("amPm") as CharSequence?
-            txtTSH.text = data?.get("hour") as CharSequence?
-            txtTSM.text = data?.get("minute") as CharSequence?
+            val amPm = data?.get("amPm") as CharSequence?
+            val hr = data?.get("hour") as CharSequence?
+            val mint = data?.get("minute") as CharSequence?
+            val time = "$hr:$mint $amPm"
+            txtTimeDate.text = time
             txtNotifTitle.text = data?.get("title") as CharSequence?
             txtNotifDesc.text = data?.get("message") as CharSequence?
-
-
-
         }
     }
 
@@ -42,8 +41,7 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.MyViewHolde
         return notificationsList.size
     }
 
-
-    fun setData(newData: List<DocumentSnapshot?>){
+    fun setData(newData: List<DocumentSnapshot?>) {
         this.notificationsList = newData as MutableList<DocumentSnapshot?>
 
         Log.d("ScheduleList", newData.size.toString())

@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/facultyLoginFragment"
-        android:name="com.trendster.campus.ui.faculty.FacultyLoginFragment"
+        android:name="com.trendster.campus.ui.fragment.user.faculty.FacultyLoginFragment"
         android:label="FacultyLoginFragment"
         tools:layout="@layout/fragment_faculty_login">
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/facultySignupFragment"
-        android:name="com.trendster.campus.ui.faculty.FacultySignupFragment"
+        android:name="com.trendster.campus.ui.fragment.user.faculty.FacultySignupFragment"
         android:label="fragment_faculty_signup"
         tools:layout="@layout/fragment_faculty_signup" >
         <action

@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.subjects.SubjectDetailsActivity">
+    tools:context=".ui.fragment.subjects.subjecthome.SubjectDetailsActivity">
 
-<!--<com.google.android.material.appbar.AppBarLayout-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:background="@drawable/toolbar_back"-->
-<!--    android:layout_margin="5dp"-->
-<!--    android:elevation="10dp"-->
-<!--    android:padding="15dp"-->
-<!--    android:theme="@style/Theme.Campus.AppBarOverlay">-->
+    <fragment
+        android:id="@+id/nav_host_subject_content"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/subject_bottom_nav"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/subject_detail_nav" />
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        app:popupTheme="@style/Theme.Campus.PopupOverlay" >-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imgWeekic"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="CampusHub"-->
-<!--            android:src="@drawable/ic_week"-->
-<!--            android:layout_gravity="right"-->
-<!--            android:layout_marginEnd="15dp"-->
-<!--            />-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/subject_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/subject_details_menu"/>
 
-<!--    </androidx.appcompat.widget.Toolbar>-->
-
-<!--</com.google.android.material.appbar.AppBarLayout>-->
-
-<include
-    android:id="@+id/subjectsdetail"
-    layout="@layout/subjects_content" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

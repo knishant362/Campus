@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/txtSubjectPoster"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="16dp"
@@ -43,9 +43,9 @@
                 android:text="Data Analytics"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                app:layout_constraintEnd_toStartOf="@+id/txtSubjectPoster"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView4" />
+                app:layout_constraintTop_toTopOf="@+id/txtSubjectPoster" />
 
             <TextView
                 android:id="@+id/txtFacultyBranch"

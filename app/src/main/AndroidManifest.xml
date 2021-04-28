@@ -13,8 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Campus">
-        <activity android:name=".ui.fragment.subjects.update.ViewPdfActivity"></activity>
-        <activity android:name=".ui.faculty.FacultyActivity"></activity>
+        <activity android:name=".ui.faculty.ClassActivity"></activity>
+        <activity android:name=".ui.fragment.subjects.classwork.ClassworkActivity" />
+        <activity android:name=".ui.fragment.subjects.ViewPdfActivity" />
+        <activity android:name=".ui.faculty.FacultyActivity" />
 
         <service
             android:name=".services.FirebaseService"
@@ -25,8 +27,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ui.fragment.notifications.NotificationActivity" />
-        <activity android:name=".ui.fragment.subjects.SubjectDetailsActivity" />
+        <activity android:name=".ui.fragment.subjects.subjecthome.SubjectDetailsActivity" />
         <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.UserActivity">
             <intent-filter>

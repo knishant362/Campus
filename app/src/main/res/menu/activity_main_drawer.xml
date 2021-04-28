@@ -16,5 +16,9 @@
             android:id="@+id/aboutFragment"
             android:icon="@drawable/ic_about"
             android:title="About" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Log Out" />
     </group>
 </menu>

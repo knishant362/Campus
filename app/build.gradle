@@ -70,12 +70,12 @@ dependencies {
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
-//    implementation 'com.txusballesteros:FitChart:1.0'
-//    implementation 'com.github.mancj:SlimChart:0.1.2'
-    implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.1'
     implementation 'jp.co.recruit_mp:android-CircleProgressView:1.1'
 
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'com.mindorks.android:prdownloader:0.6.0'
+    implementation 'com.alespero:expandable-cardview:0.8'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 }

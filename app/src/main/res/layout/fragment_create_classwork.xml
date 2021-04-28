@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.faculty.manageclass.CreateClassworkFragment">
+
+    <Button
+        android:id="@+id/btnCreateClasswork"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Create"
+        android:fontFamily="@font/product_sans_regular"
+        android:backgroundTint="@color/light_blue_600"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        app:layout_constraintEnd_toEndOf="@+id/textFieldDesc"
+        app:layout_constraintStart_toStartOf="@+id/textFieldDesc"
+        app:layout_constraintTop_toBottomOf="@+id/txtPickFile" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_baseline_attachment_24"
+        app:layout_constraintStart_toStartOf="@+id/txtDue"
+        app:layout_constraintTop_toBottomOf="@+id/txtDue" />
+
+    <TextView
+        android:id="@+id/txtDue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Due"
+        android:fontFamily="@font/product_sans_regular"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textFieldDesc"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldDesc" />
+
+
+    <TextView
+        android:id="@+id/txtPickFile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:text="Pick a Attachment"
+        android:fontFamily="@font/product_sans_regular"
+        android:textColor="@color/light_blue_600"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="@+id/textFieldDesc"
+        app:layout_constraintStart_toStartOf="@+id/txtPickDate"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+
+    <TextView
+        android:id="@+id/txtPickDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:inputType=""
+        android:text="Pick a Date"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:fontFamily="@font/product_sans_regular"
+        android:textColor="@color/light_blue_600"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDue"
+        app:layout_constraintStart_toEndOf="@+id/txtDue"
+        app:layout_constraintTop_toTopOf="@+id/txtDue" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/product_sans_regular"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldDesc"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Description"
+        app:layout_constraintEnd_toEndOf="@+id/textFieldTitle"
+        app:layout_constraintStart_toStartOf="@+id/textFieldTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/product_sans_regular"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

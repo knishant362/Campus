@@ -2,28 +2,28 @@ package com.trendster.campus.ui.fragment.user.forgot
 
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.trendster.campus.R
 import com.trendster.campus.databinding.FragmentForgotBinding
 
 class ForgotFragment : Fragment() {
 
-    private var _binding : FragmentForgotBinding? = null
+    private var _binding: FragmentForgotBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
-    private lateinit var etEmail : EditText
+    private lateinit var etEmail: EditText
     private lateinit var btnForgot: Button
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentForgotBinding.inflate(inflater, container, false)
@@ -39,7 +39,7 @@ class ForgotFragment : Fragment() {
     }
 
     private fun forgotPassword() {
-        when{
+        when {
             etEmail.text.isEmpty() -> {
                 etEmail.error = "Fill this"
                 return
@@ -51,21 +51,23 @@ class ForgotFragment : Fragment() {
             else -> {
                 auth.sendPasswordResetEmail(etEmail.text.toString())
                     .addOnSuccessListener {
-                        Toast.makeText(requireContext(),
+                        Toast.makeText(
+                            requireContext(),
                             "Instructions has been sent to entered Email",
-                            Toast.LENGTH_LONG)
+                            Toast.LENGTH_LONG
+                        )
                             .show()
 //                        findNavController().navigate(R.id.action_forgotFragment_to_loginFragment)
                         findNavController().navigateUp()
                     }.addOnFailureListener { info ->
-                        Toast.makeText(requireContext(),
+                        Toast.makeText(
+                            requireContext(),
                             info.message,
-                            Toast.LENGTH_LONG)
+                            Toast.LENGTH_LONG
+                        )
                             .show()
                     }
             }
         }
     }
-
-
 }

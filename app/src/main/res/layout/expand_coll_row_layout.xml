@@ -11,6 +11,13 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,40 +31,45 @@
                 android:id="@+id/btnDownloadPdf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imgItem"
-                app:layout_constraintEnd_toEndOf="@+id/txtItemTitle"
-                app:layout_constraintTop_toBottomOf="@+id/txtItemTitle"
-                app:srcCompat="@drawable/ic_download" />
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtItemTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtItemTitle"
+                app:srcCompat="@drawable/ic_download"
+                app:tint="@color/light_blue_600" />
 
-            <ImageView
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/imgItem"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:backgroundTint="@color/card_yellow_bright"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/sub6" />
+                app:maxImageSize="20dp"
+                app:srcCompat="@drawable/ic_books" />
 
             <TextView
                 android:id="@+id/txtItemTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
                 android:maxLines="2"
                 android:text="Data Structres by NP Bawal safa sdfad sdfasd afa sfasdf adf sdfasd "
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="@+id/imgItem"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnDownloadPdf"
                 app:layout_constraintStart_toEndOf="@+id/imgItem"
-                app:layout_constraintTop_toTopOf="@+id/imgItem"
-                app:layout_constraintVertical_bias="0.29000002" />
+                app:layout_constraintTop_toTopOf="@+id/imgItem" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

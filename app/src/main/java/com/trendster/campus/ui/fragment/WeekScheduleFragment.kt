@@ -1,10 +1,10 @@
 package com.trendster.campus.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,15 +16,16 @@ import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
 class WeekScheduleFragment : Fragment() {
 
-    private var _binding : FragmentWeekScheduleBinding ? = null
+    private var _binding: FragmentWeekScheduleBinding ? = null
     private val binding get() = _binding!!
-    private val mainViewModel : MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var recyclerView: RecyclerView
     private lateinit var mAdapter: ScheduleAdapter
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -36,16 +37,18 @@ class WeekScheduleFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val myAuth = auth.currentUser?.uid
-        mainViewModel.readSchedule.observe(viewLifecycleOwner, {
-            mAdapter.setData(it)
-            mAdapter.notifyDataSetChanged()
-
-        })
+        mainViewModel.readSchedule.observe(
+            viewLifecycleOwner,
+            {
+                mAdapter.setData(it)
+                mAdapter.notifyDataSetChanged()
+            }
+        )
 
         binding.chipGroupDay.setOnCheckedChangeListener { group, checkedId ->
             val chip = group.findViewById<Chip>(checkedId)
             val selectedDay = chip.text.toString()
-            if (myAuth != null ){
+            if (myAuth != null) {
                 mainViewModel.loadRequest(myAuth, "week", selectedDay)
             }
         }

@@ -6,69 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtTSH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="09"
-        android:textColor="@color/light_blue_600"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/materialCardView2"
-        app:layout_constraintStart_toStartOf="@+id/materialCardView2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtAMPM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:text="AM"
-        android:textColor="@color/light_blue_600"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtTSM"
-        app:layout_constraintStart_toEndOf="@+id/txtTSM"
-        app:layout_constraintTop_toTopOf="@+id/txtTSM" />
-
-    <TextView
-        android:id="@+id/txtTSM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:text="50"
-        android:textColor="@color/light_blue_600"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtCln"
-        app:layout_constraintStart_toEndOf="@+id/txtCln"
-        app:layout_constraintTop_toTopOf="@+id/txtCln" />
-
-    <TextView
-        android:id="@+id/txtCln"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:text=":"
-        android:textColor="@color/light_blue_600"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtTSH"
-        app:layout_constraintStart_toEndOf="@+id/txtTSH"
-        app:layout_constraintTop_toTopOf="@+id/txtTSH" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/materialCardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTSH">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,65 +28,126 @@
             android:layout_height="match_parent">
 
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
+                app:layout_constraintStart_toStartOf="@+id/floatingActionButton"
+                app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
+                app:srcCompat="@drawable/ic_baseline_book_24"
+                app:tint="@color/card_yellow_bright" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:backgroundTint="@color/light_blue_600"
+                android:clickable="true"
+                app:elevation="0dp"
+                android:scaleType="center"
+                app:borderWidth="0dp"
+                app:backgroundTintMode="screen"
+                app:fabCustomSize="26dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="14dp"
+                app:srcCompat="@drawable/ic_mynotice"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/timechip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/product_sans_regular"
+                android:text="09:50 AM"
+                android:textColor="@color/text_grey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/imageView2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
             <TextView
                 android:id="@+id/txtWSubject"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
-                android:maxLines="2"
-                android:text="Data Analysis uewrfwewrwererwerwsing Rerrrrrrrr"
+                android:ellipsize="end"
+                android:fontFamily="@font/product_sans_regular"
+                android:maxLines="1"
+                android:text="AUTOMATION"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
             <ImageView
                 android:id="@+id/imgWFaculty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="@+id/txtWSubject"
-                app:layout_constraintTop_toBottomOf="@+id/txtWSubject"
-                app:srcCompat="@drawable/ic_faculty" />
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="@+id/timechip"
+                app:layout_constraintTop_toBottomOf="@+id/timechip"
+                app:srcCompat="@drawable/ic_faculty"
+                app:tint="#666565" />
 
             <TextView
                 android:id="@+id/txtWFaculty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:fontFamily="@font/product_sans_regular"
                 android:text="Prachi Dhankar"
-                android:textColor="@color/black"
+                android:textColor="@color/text_grey"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgWFaculty"
                 app:layout_constraintStart_toEndOf="@+id/imgWFaculty"
                 app:layout_constraintTop_toTopOf="@+id/imgWFaculty" />
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgRoomNO"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imgWFaculty"
                 app:layout_constraintTop_toBottomOf="@+id/imgWFaculty"
                 app:srcCompat="@drawable/ic_venue"
-                app:tint="@color/black" />
+                app:tint="#666565" />
 
             <TextView
                 android:id="@+id/txtWVenue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:fontFamily="@font/product_sans_regular"
                 android:text="Room 216, Cse"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                android:textColor="@color/text_grey"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgRoomNO"
+                app:layout_constraintStart_toEndOf="@+id/imgRoomNO"
+                app:layout_constraintTop_toTopOf="@+id/imgRoomNO" />
+
+            <TextView
+                android:id="@+id/lectureType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/product_sans_medium"
+                android:text="Weekly Report"
+                android:textColor="@color/light_blue_600"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton"
+                app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
+                app:layout_constraintTop_toTopOf="@+id/floatingActionButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

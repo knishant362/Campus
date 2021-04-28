@@ -1,78 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/frag_back"
     tools:context=".ui.fragment.user.login.LoginFragment">
 
 
-        <EditText
-            android:id="@+id/etLoginEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_baseline_person_outline_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/light_blue_600" />
+
 
         <EditText
-            android:id="@+id/etLoginPassword"
+            android:id="@+id/etEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Password"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/txtForgotPassword2"
+            app:layout_constraintEnd_toEndOf="@+id/etPasswordd"
+            app:layout_constraintStart_toStartOf="@+id/etPasswordd" />
+
+        <EditText
+            android:id="@+id/etPasswordd"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="@+id/etLoginEmail"
-            app:layout_constraintStart_toStartOf="@+id/etLoginEmail"
-            app:layout_constraintTop_toBottomOf="@+id/etLoginEmail" />
+            android:fontFamily="@font/product_sans_regular"
+            app:layout_constraintBottom_toTopOf="@+id/txtForgotPassword"
+            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+            app:layout_constraintStart_toStartOf="@+id/btnLogin"/>
+
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/light_blue_600"
+            android:fontFamily="@font/product_sans_regular"
             android:text="Login"
-            app:layout_constraintEnd_toEndOf="@+id/etLoginPassword"
-            app:layout_constraintStart_toStartOf="@+id/etLoginPassword"
-            app:layout_constraintTop_toBottomOf="@+id/etLoginPassword" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/justTExt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btnGoToSignup"
+
+        <TextView
+            android:id="@+id/justTExt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:text="Signup"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="New user?"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.43"
             app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/btnGoToSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/product_sans_regular"
+            android:text=" Sign Up"
+            android:textColor="@color/light_blue_600"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/justTExt"
+            app:layout_constraintStart_toEndOf="@+id/justTExt"
+            app:layout_constraintTop_toTopOf="@+id/justTExt" />
+
+
+        <TextView
+            android:id="@+id/txtLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Welcome to CampuHub"
+            android:textColor="@color/light_blue_600"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+        <TextView
+            android:id="@+id/txtS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Login to continue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtLog"
+            app:layout_constraintStart_toStartOf="@+id/txtLog"
+            app:layout_constraintTop_toBottomOf="@+id/txtLog" />
 
         <TextView
             android:id="@+id/txtForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/product_sans_regular"
             android:text="Forgot Password ?"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-            app:layout_constraintStart_toStartOf="@+id/btnLogin"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            app:layout_constraintEnd_toEndOf="@+id/etPasswordd" />
 
-        <Button
-            android:id="@+id/btnfacultyLogin"
+
+        <TextView
+            android:id="@+id/txtForgotPassword2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Faculty Login"
-            app:layout_constraintBottom_toTopOf="@+id/btnGoToSignup"
-            app:layout_constraintEnd_toEndOf="@+id/btnGoToSignup"
-            app:layout_constraintStart_toStartOf="@+id/btnGoToSignup" />
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Password"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/etPasswordd"
+            app:layout_constraintStart_toStartOf="@+id/etPasswordd" />
+
+        <TextView
+            android:id="@+id/txtForgotPassword3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Email"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/etEmail"
+            app:layout_constraintStart_toStartOf="@+id/etEmail" />
+
+        <ImageView
+            android:id="@+id/btnfacultyLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_faculty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/light_blue_600" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

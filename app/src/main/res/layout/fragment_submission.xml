@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.subjects.classwork.SubmissionFragment">
+
+
+    <ImageView
+        android:id="@+id/imgSubmitStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_check"
+        app:layout_constraintBottom_toBottomOf="@+id/lineClasswork"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#F44336"
+        app:layout_constraintTop_toTopOf="@+id/lineClasswork" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/txtAssignmentDesc"
+        app:layout_constraintStart_toStartOf="@+id/txtAssignmentDesc"
+        app:layout_constraintTop_toBottomOf="@+id/etComment" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/myGray"
+        app:layout_constraintEnd_toEndOf="@+id/txtAssignmentTitle"
+        app:layout_constraintStart_toStartOf="@+id/txtAssignmentTitle"
+        app:layout_constraintTop_toBottomOf="@+id/chipAttachment" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/myGray"
+        app:layout_constraintEnd_toEndOf="@+id/txtAssignmentTitle"
+        app:layout_constraintStart_toStartOf="@+id/txtAssignmentTitle"
+        app:layout_constraintTop_toBottomOf="@+id/lineClasswork" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipAttachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Assignment 1"
+        app:chipIcon="@drawable/ic_baseline_book_24"
+        app:chipIconEnabled="true"
+        app:chipIconTint="#C11408"
+        app:layout_constraintStart_toStartOf="@+id/txtAssignmentTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtAssignmentDesc" />
+
+    <TextView
+        android:id="@+id/txtAssignmentTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/product_sans_regular"
+
+        android:text="Perform data type supported in R language"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/lineClasswork"
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+
+    <TextView
+        android:id="@+id/txtAssignmentDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:text="Perform data type supported in R language and hello ther am i am here responsibilyt come s wiht no theih g klwhrlj"
+        app:layout_constraintEnd_toEndOf="@+id/txtAssignmentTitle"
+        app:layout_constraintStart_toStartOf="@+id/txtAssignmentTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtAssignmentTitle" />
+
+    <TextView
+        android:id="@+id/lineClasswork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/product_sans_regular"
+        android:text="Classwork"
+        android:textColor="@color/light_blue_600"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSubmitStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/product_sans_regular"
+        android:text="Pending"
+        android:textColor="#F44336"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSubmitStatus"
+        app:layout_constraintEnd_toStartOf="@+id/imgSubmitStatus"
+        app:layout_constraintTop_toTopOf="@+id/imgSubmitStatus" />
+
+    <TextView
+        android:id="@+id/lineYourWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/product_sans_regular"
+        android:text="Your Submissions"
+        android:textColor="@color/light_blue_600"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/chipAttachment"
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+    <EditText
+        android:id="@+id/etComment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Any Comment"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/txtAssignmentDesc"
+        app:layout_constraintStart_toStartOf="@+id/chipAddFile"
+        app:layout_constraintTop_toBottomOf="@+id/chipAddFile" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipAddFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLength="30"
+        android:maxLines="1"
+        android:text="Add your work"
+        app:chipIcon="@drawable/ic_baseline_book_24"
+        app:chipIconEnabled="true"
+        app:chipIconTint="#C11408"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lineYourWork"
+        app:layout_constraintTop_toBottomOf="@+id/lineYourWork" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

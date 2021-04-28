@@ -12,11 +12,19 @@ const val USER_NAME = "userName"
 const val ACCESS_LEVEL = "accessLevel"
 const val CLASS_PRESENT = "present"
 const val CLASS_TOTAL = "total"
-
+const val SUBJECT_NAME = "subjectName"
+const val FACULTY_NAME = "facultyName"
+const val SUBJECT_DESC = "subjectDesc"
 
 /** Study Material Collection*/
-const val COLL_PDF_TITLE = "pdfTitle"
-const val COLL_PDF_URL = "pdfurl"
+const val COLL_PDF_TITLE = "pdfName"
+const val COLL_PDF_URL = "pdfUrl"
+
+/**Classwork*/
+const val ASSIGNMENT_TITLE = "assignmentTitle"
+const val ASSIGNMENT_DESC = "assignmentDesc"
+const val ASSIGNMENT_DUE_DATE = "dueDate"
+const val ASSIGNMENT_POST_DATE = "postDate"
 
 /**Schedule Firestore Keys*/
 

@@ -3,14 +3,12 @@ package com.trendster.campus.viewmodels.userviewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import com.trendster.campus.utils.*
 
-class UserViewModel: ViewModel() {
+class UserViewModel : ViewModel() {
 
     private val firestore = FirebaseFirestore.getInstance()
-    private val storageReference = FirebaseStorage.getInstance().reference
-
+//    private val storageReference = FirebaseStorage.getInstance().reference
 
     /** User Activity stuff*/
     fun saveUserData(
@@ -20,7 +18,7 @@ class UserViewModel: ViewModel() {
         userBranch: String,
         userSemester: String,
         accessLevel: String
-    ){
+    ) {
         val data = HashMap<String, String>()
         data[USER_UID] = userUID
         data[USER_NAME] = userName
@@ -32,56 +30,53 @@ class UserViewModel: ViewModel() {
         firestore.collection("Users").document(userUID)
             .set(data).addOnSuccessListener {
                 Log.d("saveUserData", userUID)
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 Log.d("saveUserData", "failed")
             }
 
-        val dummydata = HashMap<String, Long>()
-        dummydata[CLASS_PRESENT] = 1
-        dummydata[CLASS_TOTAL] = 1
-
         /** Create subjects according to Branch and Semester*/
-        for (mySubject in subjectListBranch(userBranch, userSemester) ){
-            firestore.collection("Users").document(userUID)
-                    .collection("Attendance").document(mySubject)
-                    .set(dummydata)
-                    .addOnSuccessListener {
-                        Log.d("SubjectCreation" , "Success")
-                    }
-                    .addOnFailureListener {
-                        throw it
-                    }
-        }
+        loadSubjects(userUID, userBranch, userSemester)
     }
 
-    private fun subjectListBranch(branch: String, semester: String): MutableList<String> {
-        return when(branch){
-            "CSE" -> {
-                subjectCSE(semester)
+    private fun loadSubjects(userUID: String, userBranch: String, userSemester: String) {
+        val subjectArray = arrayListOf<String>()
+        firestore.collection("Data").document(userBranch)
+            .collection(userSemester).document("Subjects")
+            .collection("list").get()
+            .addOnSuccessListener { myData ->
+                Log.d("HJKK", myData.documents.size.toString())
+                val docs = myData.documents
+                for (i in 0 until docs.size) {
+                    createAttendance(userUID, docs[i].id)
+                    Log.d("HJKKw11", subjectArray.toString())
+                }
             }
-            else -> {
-                mutableListOf()
+            .addOnFailureListener {
+                Log.d("HJKKw", it.message!!)
             }
-        }
     }
 
-    private fun subjectCSE(semester: String): MutableList<String> {
-        val list = mutableListOf<String>()
-        when (semester) {
-            "6" -> {
-                list.add("Data Analytics using R")
-                list.add("Theory of Automaton")
-                list.add("Operating System")
-                list.add(".Net")
+    private fun createAttendance(userUID: String, mySubject: String) {
+
+        val dummyData = HashMap<String, Long>()
+        dummyData[CLASS_PRESENT] = 1
+        dummyData[CLASS_TOTAL] = 1
+
+        firestore.collection("Users").document(userUID)
+            .collection("Attendance").document(mySubject)
+            .set(dummyData)
+            .addOnSuccessListener {
+                Log.d("SubjectCreation", "Success")
             }
-        }
-        return list
+            .addOnFailureListener {
+                Log.d("SubjectCreation", it.message!!)
+            }
     }
 
     fun saveFacultyData(
         userUID: String,
         userName: String
-    ){
+    ) {
         val data = HashMap<String, String>()
         data[USER_UID] = userUID
         data[USER_NAME] = userName
@@ -90,10 +85,8 @@ class UserViewModel: ViewModel() {
         firestore.collection("Faculty").document(userUID)
             .set(data).addOnSuccessListener {
                 Log.d("saveUserData", userUID)
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 Log.d("saveUserData", "failed")
             }
     }
-
-
 }

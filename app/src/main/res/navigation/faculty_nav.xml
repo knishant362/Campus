@@ -3,32 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/faculty_nav"
-    app:startDestination="@id/facultyFragment">
+    app:startDestination="@id/studentsFragment">
 
     <fragment
-        android:id="@+id/facultyFragment"
-        android:name="com.trendster.campus.ui.faculty.FacultyFragment"
-        android:label="fragment_faculty"
-        tools:layout="@layout/fragment_faculty" >
-        <action
-            android:id="@+id/action_facultyFragment_to_studentsFragment"
-            app:destination="@id/studentsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/studentsFragment"
-        android:name="com.trendster.campus.ui.faculty.StudentsFragment"
+        android:name="com.trendster.campus.ui.faculty.attendance.StudentsFragment"
         android:label="fragment_students"
         tools:layout="@layout/fragment_students" >
-        <argument
-            android:name="studentInfo"
-            app:argType="com.trendster.campus.models.StudentModel" />
         <action
             android:id="@+id/action_studentsFragment_to_studentAttendanceFragment"
             app:destination="@id/studentAttendanceFragment" />
     </fragment>
     <dialog
         android:id="@+id/studentAttendanceFragment"
-        android:name="com.trendster.campus.ui.faculty.StudentAttendanceFragment"
+        android:name="com.trendster.campus.ui.faculty.attendance.StudentAttendanceFragment"
         android:label="fragment_student_attendance"
         tools:layout="@layout/fragment_student_attendance" >
         <action
@@ -38,4 +26,22 @@
             android:name="studentInfo"
             app:argType="com.trendster.campus.models.StudentModel" />
     </dialog>
+    <fragment
+        android:id="@+id/manageClassFragment"
+        android:name="com.trendster.campus.ui.faculty.manageclass.ManageClassFragment"
+        android:label="fragment_manage_class"
+        tools:layout="@layout/fragment_manage_class" >
+        <action
+            android:id="@+id/action_manageClassFragment_to_createClassworkFragment"
+            app:destination="@id/createClassworkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createClassworkFragment"
+        android:name="com.trendster.campus.ui.faculty.manageclass.CreateClassworkFragment"
+        android:label="fragment_create_classwork"
+        tools:layout="@layout/fragment_create_classwork" >
+        <action
+            android:id="@+id/action_createClassworkFragment_to_manageClassFragment"
+            app:destination="@id/manageClassFragment" />
+    </fragment>
 </navigation>

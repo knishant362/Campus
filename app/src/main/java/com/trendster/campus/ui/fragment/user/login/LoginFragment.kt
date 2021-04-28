@@ -3,14 +3,11 @@ package com.trendster.campus.ui.fragment.user.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -20,34 +17,35 @@ import com.trendster.campus.ui.MainActivity
 
 class LoginFragment : Fragment() {
 
-    private var _binding : FragmentLoginBinding? = null
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var etEmail : EditText
+    private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
-    private lateinit var btnSignup: Button
+    private lateinit var btnSignup: TextView
     private lateinit var btnLogin: Button
     private lateinit var txtForgotPass: TextView
     private lateinit var auth: FirebaseAuth
 
     override fun onStart() {
         super.onStart()
-        if (auth.currentUser != null){
+        if (auth.currentUser != null) {
             startActivity(Intent(requireContext(), MainActivity::class.java))
             activity?.finish()
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         auth = FirebaseAuth.getInstance()
-        etEmail = binding.etLoginEmail
-        etPassword = binding.etLoginPassword
+        etEmail = binding.etEmail
+        etPassword = binding.etPasswordd
         btnLogin = binding.btnLogin
         btnSignup = binding.btnGoToSignup
         txtForgotPass = binding.txtForgotPassword
@@ -56,27 +54,29 @@ class LoginFragment : Fragment() {
         btnSignup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
-        txtForgotPass.setOnClickListener{
+        txtForgotPass.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_forgotFragment)
         }
         binding.btnfacultyLogin.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_facultyLoginFragment)
         }
 
-
         return binding.root
     }
 
     private fun login() {
         btnLogin.setOnClickListener {
-            when{
+            when {
 
                 etEmail.text.isEmpty() -> {
-                    etEmail.error = "Fill this"
+                    binding.etEmail.error = "Fill this"
+//                    etEmail.error = "Fill this"
                     return@setOnClickListener
                 }
-                etPassword.text.isEmpty() ->{
-                    etPassword.error = "Fill this"
+                etPassword.text.isEmpty() -> {
+                    binding.etEmail.error = "Fill this"
+//                    etPassword.error = "Fill this"
+                    return@setOnClickListener
                 }
                 else -> {
                     auth.signInWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
@@ -86,26 +86,25 @@ class LoginFragment : Fragment() {
                                 Log.d("LoginSign", "signInWithEmail:success")
                                 val user = auth.currentUser
                                 updateUI(user)
-                            }else {
+                            } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w("LoginSign", "signInWithEmail:failure", task.exception)
-                                Toast.makeText(requireContext(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 updateUI(null)
                             }
                         }
                 }
-
             }
         }
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        if (user != null){
+        if (user != null) {
             startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()
         }
-
     }
-
 }

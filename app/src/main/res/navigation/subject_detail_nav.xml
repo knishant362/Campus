@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/subjectCollectionFragment"
-        android:name="com.trendster.campus.ui.fragment.subjects.SubjectCollectionFragment"
+        android:name="com.trendster.campus.ui.fragment.subjects.subjecthome.SubjectCollectionFragment"
         android:label="Study Material"
         tools:layout="@layout/fragment_subject_collection" >
         <action
@@ -16,11 +16,32 @@
     </fragment>
     <fragment
         android:id="@+id/collectionExpandFragment"
-        android:name="com.trendster.campus.ui.fragment.subjects.CollectionExpandFragment"
+        android:name="com.trendster.campus.ui.fragment.subjects.subjecthome.CollectionExpandFragment"
         android:label="fragment_collection_expand"
         tools:layout="@layout/fragment_collection_expand" >
         <argument
             android:name="collCategory"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/classworkFragment"
+        android:name="com.trendster.campus.ui.fragment.subjects.classwork.ClassworkFragment"
+        android:label="fragment_classwork"
+        tools:layout="@layout/fragment_classwork" >
+        <action
+            android:id="@+id/action_classworkFragment_to_submissionFragment"
+            app:destination="@id/submissionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/submissionFragment"
+        android:name="com.trendster.campus.ui.fragment.subjects.classwork.SubmissionFragment"
+        android:label="fragment_submission"
+        tools:layout="@layout/fragment_submission" >
+        <action
+            android:id="@+id/action_submissionFragment_to_classworkFragment"
+            app:destination="@id/classworkFragment" />
+        <argument
+            android:name="classromModel"
+            app:argType="com.trendster.campus.models.ClassworkModel" />
     </fragment>
 </navigation>

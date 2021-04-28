@@ -7,11 +7,14 @@
     >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="200dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="6dp"
-        android:layout_margin="15dp"
+        app:cardElevation="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+
+        app:cardCornerRadius="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +22,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/txtAttPercent"
@@ -27,47 +30,38 @@
                 android:layout_height="wrap_content"
                 android:text="75%"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/view_id"
-                app:layout_constraintEnd_toEndOf="@+id/view_id"
-                app:layout_constraintStart_toStartOf="@+id/view_id"
-                app:layout_constraintTop_toTopOf="@+id/view_id" />
+                app:layout_constraintBottom_toBottomOf="@+id/attendance_chart"
+                app:layout_constraintEnd_toEndOf="@+id/attendance_chart"
+                app:layout_constraintStart_toStartOf="@+id/attendance_chart"
+                app:layout_constraintTop_toTopOf="@+id/attendance_chart" />
 
             <TextView
                 android:id="@+id/txtAttendedClasses"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:text="17/26"
                 android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/textView4"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Minimum 75%"
-                app:layout_constraintEnd_toEndOf="@+id/view_id"
-                app:layout_constraintStart_toStartOf="@+id/view_id"
-                app:layout_constraintTop_toBottomOf="@+id/view_id" />
+                android:textColor="@color/card_blue_dark"
+                android:textSize="16sp"
+                android:fontFamily="@font/product_sans_regular"
+                app:layout_constraintEnd_toEndOf="@+id/attendance_chart"
+                app:layout_constraintStart_toStartOf="@+id/attendance_chart"
+                app:layout_constraintTop_toBottomOf="@+id/attendance_chart" />
 
             <jp.co.recruit_mp.android.circleprogressview.CircleProgressView
-                android:id="@+id/view_id"
+                android:id="@+id/attendance_chart"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="16dp"
-                app:CircleProgressView_foregroundColor="@color/light_blue_600"
+                android:layout_marginTop="16dp"
+                app:CircleProgressView_backgroundColor="@color/card_blue_light"
+                app:CircleProgressView_foregroundColor="@color/card_blue_dark"
                 app:CircleProgressView_progress="0.60"
-                app:CircleProgressView_stroke="14dp"
+                app:CircleProgressView_stroke="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtSubName"
@@ -76,12 +70,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/product_sans_regular"
                 android:maxLines="2"
                 android:text="Data Analysis using R"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

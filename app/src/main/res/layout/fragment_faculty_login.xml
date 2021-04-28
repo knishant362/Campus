@@ -1,45 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/frag_back"
     tools:context=".ui.faculty.FacultyFragment">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_faculty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/light_blue_600" />
 
 
     <EditText
         android:id="@+id/etFLoginEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/product_sans_regular"
+        app:layout_constraintBottom_toTopOf="@+id/etFLoginPassword"
+        app:layout_constraintEnd_toEndOf="@+id/etFLoginPassword"
+        app:layout_constraintStart_toStartOf="@+id/etFLoginPassword" />
 
     <EditText
         android:id="@+id/etFLoginPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/etFLoginEmail"
-        app:layout_constraintStart_toStartOf="@+id/etFLoginEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etFLoginEmail" />
+        android:fontFamily="@font/product_sans_regular"
+        app:layout_constraintBottom_toTopOf="@+id/txtForgotPassword"
+        app:layout_constraintEnd_toEndOf="@+id/btnfacultyLogin"
+        app:layout_constraintStart_toStartOf="@+id/btnfacultyLogin" />
 
     <Button
-        android:id="@+id/btnGoToSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Faculty Signup"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btnfacultyLogin"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/light_blue_600"
+        android:fontFamily="@font/product_sans_regular"
+        android:text="Faculty Login"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/justTExt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -47,22 +66,53 @@
         android:id="@+id/txtForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Forgot Password ?"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnfacultyLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnfacultyLogin"
-        app:layout_constraintTop_toBottomOf="@+id/btnfacultyLogin" />
+        android:textSize="14sp"
+        android:fontFamily="@font/product_sans_regular"
+        app:layout_constraintBottom_toTopOf="@+id/btnfacultyLogin"
+        app:layout_constraintEnd_toEndOf="@+id/btnfacultyLogin" />
 
-    <Button
-        android:id="@+id/btnfacultyLogin"
+    <TextView
+        android:id="@+id/xtFacultyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/product_sans_regular"
         android:text="Faculty Login"
-        app:layout_constraintEnd_toEndOf="@+id/etFLoginPassword"
-        app:layout_constraintStart_toStartOf="@+id/etFLoginPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etFLoginPassword" />
+        android:textColor="@color/light_blue_600"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    <TextView
+        android:id="@+id/justTExt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/product_sans_regular"
+        android:text="New Faculty?"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/btnGoToSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/product_sans_regular"
+        android:text=" Sign Up"
+        android:textColor="@color/light_blue_600"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/justTExt"
+        app:layout_constraintStart_toEndOf="@+id/justTExt"
+        app:layout_constraintTop_toTopOf="@+id/justTExt" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

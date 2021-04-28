@@ -8,30 +8,54 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/toolbar_back"
-        android:layout_margin="5dp"
-        android:elevation="10dp"
-        android:padding="15dp"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
         android:theme="@style/Theme.Campus.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:title="Campus"
+            android:layout_height="match_parent"
             app:popupTheme="@style/Theme.Campus.PopupOverlay" >
 
+
             <ImageView
-                android:id="@+id/imgWeekic"
+                android:id="@+id/btnDrawer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CampusHub"
-                android:src="@drawable/ic_week"
                 android:layout_gravity="right"
-                android:layout_marginRight="15dp"
-                />
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_menu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
 
-        </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Campus"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnDrawer"
+                app:layout_constraintStart_toEndOf="@+id/btnDrawer"
+                app:layout_constraintTop_toTopOf="@+id/btnDrawer" />
+
+            <ImageView
+                android:id="@+id/btnProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -12,40 +12,43 @@
         tools:layout="@layout/fragment_schedule" >
         <action
             android:id="@+id/action_scheduleFragment_to_weekScheduleFragment"
-            app:destination="@id/weekScheduleFragment" />
+            app:destination="@id/weekScheduleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
-            android:id="@+id/action_scheduleFragment_to_updateScheduleFragment"
-            app:destination="@id/updateScheduleFragment" />
+            android:id="@+id/action_scheduleFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/subjectsFragment"
-        android:name="com.trendster.campus.ui.fragment.subjects.SubjectsFragment"
+        android:name="com.trendster.campus.ui.fragment.subjects.subjecthome.SubjectsFragment"
         android:label="Subjects"
         tools:layout="@layout/fragment_subjects" >
         <action
             android:id="@+id/action_subjectsFragment_to_subjectDetailsActivity"
             app:destination="@id/subjectDetailsActivity" />
         <action
-            android:id="@+id/action_subjectsFragment_to_updateSubjectFragment"
-            app:destination="@id/updateSubjectFragment" />
+            android:id="@+id/action_subjectsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/profileFragment"
         android:name="com.trendster.campus.ui.fragment.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_profileFragment_to_updateProfileFragment"
-            app:destination="@id/updateProfileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.trendster.campus.ui.fragment.notifications.NotificationsFragment"
         android:label="Notifications"
         tools:layout="@layout/fragment_notifications" >
+
         <action
-            android:id="@+id/action_notificationsFragment_to_notificationActivity"
-            app:destination="@id/notificationActivity" />
+            android:id="@+id/action_notificationsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -72,39 +75,12 @@
         tools:layout="@layout/fragment_week_schedule" />
     <activity
         android:id="@+id/subjectDetailsActivity"
-        android:name="com.trendster.campus.ui.fragment.subjects.SubjectDetailsActivity"
+        android:name="com.trendster.campus.ui.fragment.subjects.subjecthome.SubjectDetailsActivity"
         android:label="activity_subject_details"
         tools:layout="@layout/activity_subject_details" >
         <argument
             android:name="subjectName"
             app:argType="string" />
     </activity>
-    <fragment
-        android:id="@+id/updateProfileFragment"
-        android:name="com.trendster.campus.ui.fragment.profile.UpdateProfileFragment"
-        android:label="fragment_update_profile"
-        tools:layout="@layout/fragment_update_profile" >
-        <action
-            android:id="@+id/action_updateProfileFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateScheduleFragment"
-        android:name="com.trendster.campus.ui.fragment.schedule.update.UpdateScheduleFragment"
-        android:label="UpdateScheduleFragment"
-        tools:layout="@layout/fragment_update_schedule" >
-        <action
-            android:id="@+id/action_updateScheduleFragment_to_scheduleFragment"
-            app:destination="@id/scheduleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateSubjectFragment"
-        android:name="com.trendster.campus.ui.fragment.subjects.update.UpdateSubjectFragment"
-        android:label="UpdateSubjectFragment"
-        tools:layout="@layout/fragment_update_subject"/>
-    <activity
-        android:id="@+id/notificationActivity"
-        android:name="com.trendster.campus.ui.fragment.notifications.NotificationActivity"
-        android:label="activity_notification"
-        tools:layout="@layout/activity_notification" />
+
 </navigation>

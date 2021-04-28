@@ -1,0 +1,9 @@
+<TextView
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:text="Branch"
+    android:padding="14dp"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    />
