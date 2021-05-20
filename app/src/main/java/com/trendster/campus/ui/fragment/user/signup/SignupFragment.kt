@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -25,12 +26,12 @@ class SignupFragment : Fragment() {
     private var _binding: FragmentSignupBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var etEmail: EditText
-    private lateinit var etName: EditText
+    private lateinit var etEmail: TextInputLayout
+    private lateinit var etName: TextInputLayout
     private lateinit var etBranch: TextInputLayout
-    private lateinit var etRollNo: EditText
+    private lateinit var etRollNo: TextInputLayout
     private lateinit var etSemester: TextInputLayout
-    private lateinit var etPassword: EditText
+    private lateinit var etPassword: TextInputLayout
     private lateinit var btnSignup: Button
 
     private var branch = "CSE"
@@ -60,44 +61,55 @@ class SignupFragment : Fragment() {
 
         signUp()
 
+        binding.btnBackSignup.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.btnGoToLoginHere.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         return binding.root
     }
 
     private fun signUp() {
         btnSignup.setOnClickListener {
             when {
-                etEmail.text.isEmpty() -> {
+                etEmail.editText?.text?.isEmpty() == true -> {
                     etEmail.error = "Fill this"
                     return@setOnClickListener
                 }
-                etName.text.isEmpty() -> {
+                etName.editText?.text?.isEmpty() == true -> {
                     etName.error = "Fill this"
                     return@setOnClickListener
                 }
-                etRollNo.text.isEmpty() -> {
+                etRollNo.editText?.text?.isEmpty() == true -> {
                     etRollNo.error = "Fill this"
+                    return@setOnClickListener
                 }
                 etBranch.editText?.text?.isEmpty() == true -> {
                     etBranch.error = "Fill this"
+                    return@setOnClickListener
                 }
                 etSemester.editText?.text?.isEmpty() == true -> {
                     etSemester.error = "Fill this"
+                    return@setOnClickListener
                 }
-                etPassword.text.isEmpty() -> {
+                etPassword.editText?.text?.isEmpty() == true -> {
                     etPassword.error = "Fill this"
+                    return@setOnClickListener
                 }
                 else -> {
 
                     branch = etBranch.editText?.text.toString()
                     semester = etSemester.editText?.text.toString()
 
-                    auth.createUserWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
+                    auth.createUserWithEmailAndPassword(etEmail.editText?.text.toString(), etPassword.editText?.text.toString())
                         .addOnCompleteListener(requireActivity()) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("SIGNUP", "createUserWithEmail:success")
                                 val user = auth.currentUser
-                                updateUI(user, etName.text.toString(), etRollNo.text.toString(), branch, semester)
+                                updateUI(user, etName.editText?.text.toString(), etRollNo.editText?.text.toString(), branch, semester)
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w("SIGNUP", "createUserWithEmail:failure", task.exception)

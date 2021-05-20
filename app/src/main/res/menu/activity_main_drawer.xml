@@ -7,18 +7,22 @@
         <item
             android:id="@+id/scheduleFragment"
             android:icon="@drawable/ic_home"
+            android:checkable="false"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/noticeFragment"
             android:icon="@drawable/ic_mynotice"
+            android:checkable="false"
             android:title="Notice" />
         <item
             android:id="@+id/aboutFragment"
             android:icon="@drawable/ic_about"
+            android:checkable="false"
             android:title="About" />
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_logout"
+            android:checkable="false"
             android:title="Log Out" />
     </group>
 </menu>

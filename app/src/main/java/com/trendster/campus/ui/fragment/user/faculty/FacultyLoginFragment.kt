@@ -51,6 +51,9 @@ class FacultyLoginFragment : Fragment() {
         txtForgotPass.setOnClickListener {
             findNavController().navigate(R.id.action_facultyLoginFragment_to_forgotFragment)
         }
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         return binding.root
     }
@@ -63,6 +66,7 @@ class FacultyLoginFragment : Fragment() {
                 }
                 etPassword.text.isEmpty() -> {
                     etPassword.error = "Fill this"
+                    return@setOnClickListener
                 }
                 else -> {
                     auth.signInWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())

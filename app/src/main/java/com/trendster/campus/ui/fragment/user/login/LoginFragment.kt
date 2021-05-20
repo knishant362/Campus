@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.trendster.campus.R
@@ -20,8 +21,8 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
+    private lateinit var etEmail: TextInputLayout
+    private lateinit var etPassword: TextInputLayout
     private lateinit var btnSignup: TextView
     private lateinit var btnLogin: Button
     private lateinit var txtForgotPass: TextView
@@ -68,18 +69,16 @@ class LoginFragment : Fragment() {
         btnLogin.setOnClickListener {
             when {
 
-                etEmail.text.isEmpty() -> {
+                etEmail.editText?.text?.isEmpty() == true -> {
                     binding.etEmail.error = "Fill this"
-//                    etEmail.error = "Fill this"
                     return@setOnClickListener
                 }
-                etPassword.text.isEmpty() -> {
-                    binding.etEmail.error = "Fill this"
-//                    etPassword.error = "Fill this"
+                etPassword.editText?.text?.isEmpty() == true -> {
+                    etPassword.error = "Fill this"
                     return@setOnClickListener
                 }
                 else -> {
-                    auth.signInWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
+                    auth.signInWithEmailAndPassword(etEmail.editText?.text.toString(), etPassword.editText?.text.toString())
                         .addOnCompleteListener(requireActivity()) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information

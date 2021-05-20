@@ -96,4 +96,9 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) ||
             super.onSupportNavigateUp()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

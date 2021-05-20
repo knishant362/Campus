@@ -1,6 +1,8 @@
 package com.trendster.campus.viewmodels.userviewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.trendster.campus.utils.*
@@ -9,6 +11,10 @@ class UserViewModel : ViewModel() {
 
     private val firestore = FirebaseFirestore.getInstance()
 //    private val storageReference = FirebaseStorage.getInstance().reference
+
+    private val _readUserType = MutableLiveData<Boolean?>()
+    val readUserType: LiveData<Boolean?>
+        get() = _readUserType
 
     /** User Activity stuff*/
     fun saveUserData(
@@ -88,5 +94,12 @@ class UserViewModel : ViewModel() {
             }.addOnFailureListener {
                 Log.d("saveUserData", "failed")
             }
+    }
+
+    fun readUserLevel(uid: String) {
+        firestore.collection("Faculty").document(uid).addSnapshotListener { value, error ->
+            val isFaculty = value?.exists()
+            _readUserType.postValue(isFaculty)
+        }
     }
 }
