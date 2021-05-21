@@ -4,21 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.user.WelcomeFragment">
+    tools:context=".ui.fragment.user.welcome.WelcomeFragment">
 
     <ImageView
         android:id="@+id/slkdf"
-        android:src="@drawable/ic_login_doodle"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
+        android:layout_height="match_parent"
         android:alpha="0.05"
-        android:layout_height="match_parent"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_login_doodle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="#00FFFFFF"
-        >
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -98,10 +106,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="24dp"
+                android:background="@drawable/btn_background"
                 android:fontFamily="@font/product_sans_regular"
                 android:padding="14dp"
                 android:stateListAnimator="@null"
-                android:background="@drawable/btn_background"
                 android:text="Sign Up"
                 android:textAllCaps="false"
                 android:textColor="@color/light_blue_600"

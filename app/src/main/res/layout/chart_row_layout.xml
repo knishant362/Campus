@@ -6,15 +6,15 @@
     android:layout_height="wrap_content"
     >
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        app:cardElevation="0dp"
-        android:layout_marginLeft="16dp"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-
-        app:cardCornerRadius="6dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,69 +22,116 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txtAttPercent"
+            <ImageView
+                android:id="@+id/card_images"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_7"
+                app:layout_constraintBottom_toBottomOf="@+id/attendanceCard"
+                app:layout_constraintEnd_toEndOf="@+id/attendanceCard"
+                app:layout_constraintStart_toStartOf="@+id/attendanceCard"
+                app:layout_constraintTop_toTopOf="@+id/attendanceCard" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:background="@color/light_blue_600"
+                android:alpha="0.3"
+                app:layout_constraintBottom_toBottomOf="@+id/attendanceCard"
+                app:layout_constraintEnd_toEndOf="@+id/attendanceCard"
+                app:layout_constraintStart_toStartOf="@+id/attendanceCard"
+                app:layout_constraintTop_toTopOf="@+id/attendanceCard" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/attendanceCard"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="75%"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/attendance_chart"
-                app:layout_constraintEnd_toEndOf="@+id/attendance_chart"
-                app:layout_constraintStart_toStartOf="@+id/attendance_chart"
-                app:layout_constraintTop_toTopOf="@+id/attendance_chart" />
-
-            <TextView
-                android:id="@+id/txtAttendedClasses"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="17/26"
-                android:textAlignment="center"
-                android:textColor="@color/card_blue_dark"
-                android:textSize="16sp"
-                android:fontFamily="@font/product_sans_regular"
-                app:layout_constraintEnd_toEndOf="@+id/attendance_chart"
-                app:layout_constraintStart_toStartOf="@+id/attendance_chart"
-                app:layout_constraintTop_toBottomOf="@+id/attendance_chart" />
-
-            <jp.co.recruit_mp.android.circleprogressview.CircleProgressView
-                android:id="@+id/attendance_chart"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                app:CircleProgressView_backgroundColor="@color/card_blue_light"
-                app:CircleProgressView_foregroundColor="@color/card_blue_dark"
-                app:CircleProgressView_progress="0.60"
-                app:CircleProgressView_stroke="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txtSubName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:maxLines="2"
-                android:text="Data Analysis using R"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="16sp"
+                android:layout_height="170dp"
+                android:backgroundTint="#002D2B4D"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtAttendedClasses" />
+                app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/txtAttPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:text="75%"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/attendance_chart"
+                        app:layout_constraintEnd_toEndOf="@+id/attendance_chart"
+                        app:layout_constraintStart_toStartOf="@+id/attendance_chart"
+                        app:layout_constraintTop_toTopOf="@+id/attendance_chart" />
+
+                    <TextView
+                        android:id="@+id/txtAttendedClasses"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:text="17/26"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/attendance_chart"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/attendance_chart" />
+
+                    <jp.co.recruit_mp.android.circleprogressview.CircleProgressView
+                        android:id="@+id/attendance_chart"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        app:CircleProgressView_backgroundColor="#DEB0AEAE"
+                        app:CircleProgressView_foregroundColor="@color/white"
+                        app:CircleProgressView_progress="0.60"
+                        app:CircleProgressView_stroke="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtSubName"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:maxLines="2"
+                        android:text="Data Analysis using R"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/attendance_chart"
+                        app:layout_constraintTop_toBottomOf="@+id/attendance_chart" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

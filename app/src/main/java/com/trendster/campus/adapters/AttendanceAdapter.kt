@@ -5,13 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentSnapshot
 import com.trendster.campus.R
 import com.trendster.campus.databinding.ChartRowLayoutBinding
-import jp.co.recruit_mp.android.circleprogressview.CircleProgressView
 
 class AttendanceAdapter : RecyclerView.Adapter<AttendanceAdapter.MyViewHolder>() {
     var attendance = mutableListOf<DocumentSnapshot?>()
@@ -44,8 +43,8 @@ class AttendanceAdapter : RecyclerView.Adapter<AttendanceAdapter.MyViewHolder>()
                     attendanceChart.progress = percentage
                     setColors(
                         holder.itemView.context,
-                        checkColor(position),
-                        attendanceChart,
+                        checkImage(position),
+                        cardImages,
                         txtAttendedClasses
                     )
                 }
@@ -55,31 +54,36 @@ class AttendanceAdapter : RecyclerView.Adapter<AttendanceAdapter.MyViewHolder>()
 
     private fun setColors(
         context: Context,
-        myColor: Pair<Int, Int>,
-        attendanceChart: CircleProgressView,
+        myImage: Int,
+        cardImages: ImageView,
         percentText: TextView
     ) {
-        attendanceChart.foregroundColor = ContextCompat.getColor(context, myColor.first)
-        attendanceChart.backgroundColor = ContextCompat.getColor(context, myColor.second)
-        percentText.setTextColor(ContextCompat.getColor(context, myColor.first))
+        cardImages.setImageResource(myImage)
     }
 
-    private fun checkColor(
+    private fun checkImage(
         position: Int,
-    ): Pair<Int, Int> {
-
+    ): Int {
         var pos = position + 1
         if (position> 5) {
             pos = position % 5
         }
         Log.d("MyChip", "$pos , $position")
         return when (pos) {
-            1 -> Pair(R.color.card_blue_dark, R.color.card_blue_light)
-            2 -> Pair(R.color.card_orange, R.color.card_orange_light)
-            3 -> Pair(R.color.card_green, R.color.card_green_light)
-            4 -> Pair(R.color.card_purple, R.color.card_purple_light)
-            5 -> Pair(R.color.card_yellow, R.color.card_yellow_light)
-            else -> Pair(R.color.card_blue_dark, R.color.card_blue_light)
+//            1 -> Pair(R.color.card_blue_dark, R.color.card_blue_light)
+//            2 -> Pair(R.color.card_orange, R.color.card_orange_light)
+//            3 -> Pair(R.color.card_green, R.color.card_green_light)
+//            4 -> Pair(R.color.card_purple, R.color.card_purple_light)
+//            5 -> Pair(R.color.card_yellow, R.color.card_yellow_light)
+            1 -> R.drawable.ic_1
+            2 -> R.drawable.ic_2
+            3 -> R.drawable.ic_7
+            4 -> R.drawable.ic_4
+            5 -> R.drawable.ic_5
+            6 -> R.drawable.ic_6
+            7 -> R.drawable.ic_3
+            8 -> R.drawable.ic_8
+            else -> R.drawable.ic_1
         }
     }
 

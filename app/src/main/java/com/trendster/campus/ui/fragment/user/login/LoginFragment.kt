@@ -28,14 +28,6 @@ class LoginFragment : Fragment() {
     private lateinit var txtForgotPass: TextView
     private lateinit var auth: FirebaseAuth
 
-    override fun onStart() {
-        super.onStart()
-        if (auth.currentUser != null) {
-            startActivity(Intent(requireContext(), MainActivity::class.java))
-            activity?.finish()
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

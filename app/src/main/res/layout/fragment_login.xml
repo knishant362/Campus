@@ -9,16 +9,16 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_login_doodle"
             android:alpha="0.06"
             android:scaleType="centerCrop"
-            />
+            android:src="@drawable/ic_login_doodle"/>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#0003DAC5"
-            >
+            app:cardElevation="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -44,22 +44,23 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="24dp"
                             android:layout_marginEnd="16dp"
+                            android:background="@color/white"
                             android:hint="Email address"
                             app:boxCornerRadiusBottomEnd="30dp"
                             app:boxCornerRadiusBottomStart="30dp"
                             app:boxCornerRadiusTopEnd="30dp"
                             app:boxCornerRadiusTopStart="30dp"
-                            android:background="@color/white"
-                            app:startIconTint="@color/light_blue_600"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtS"
-                            app:startIconDrawable="@drawable/ic_person">
+                            app:startIconDrawable="@drawable/ic_person"
+                            app:startIconTint="@color/light_blue_600">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:maxLines="1"/>
+                                    android:lines="1"
+                                    android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -71,41 +72,42 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
+                            android:background="@color/white"
                             android:hint="Password"
                             app:boxCornerRadiusBottomEnd="30dp"
                             app:boxCornerRadiusBottomStart="30dp"
                             app:boxCornerRadiusTopEnd="30dp"
-                            android:background="@color/white"
                             app:boxCornerRadiusTopStart="30dp"
-                            app:startIconTint="@color/light_blue_600"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/etEmail"
-                            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+                            app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                            app:startIconTint="@color/light_blue_600">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:maxLines="1"/>
+                                    android:inputType="textPassword"
+                                    android:lines="1"
+                                    android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
-
 
 
                         <Button
                             android:id="@+id/btnLogin"
+                            style="@style/Widget.MaterialComponents.FloatingActionButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="24dp"
                             android:layout_marginEnd="16dp"
-                            style="@style/Widget.MaterialComponents.FloatingActionButton"
                             android:backgroundTint="@color/light_blue_600"
                             android:fontFamily="@font/product_sans_regular"
+                            android:padding="14dp"
+                            android:stateListAnimator="@null"
                             android:text="Login"
                             android:textAllCaps="false"
-                            android:padding="14dp"
                             android:textSize="16sp"
-                            android:stateListAnimator="@null"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />

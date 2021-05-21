@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.trendster.campus.R
@@ -23,8 +24,8 @@ class FacultyLoginFragment : Fragment() {
     private var _binding: FragmentFacultyLoginBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
+    private lateinit var etEmail: TextInputLayout
+    private lateinit var etPassword: TextInputLayout
     private lateinit var btnSignup: TextView
     private lateinit var btnLogin: Button
     private lateinit var txtForgotPass: TextView
@@ -60,16 +61,16 @@ class FacultyLoginFragment : Fragment() {
     private fun login() {
         btnLogin.setOnClickListener {
             when {
-                etEmail.text.isEmpty() -> {
+                etEmail.editText?.text?.isEmpty() == true -> {
                     etEmail.error = "Fill this"
                     return@setOnClickListener
                 }
-                etPassword.text.isEmpty() -> {
+                etPassword.editText?.text?.isEmpty() == true -> {
                     etPassword.error = "Fill this"
                     return@setOnClickListener
                 }
                 else -> {
-                    auth.signInWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
+                    auth.signInWithEmailAndPassword(etEmail.editText?.text.toString(), etPassword.editText?.text.toString())
                         .addOnCompleteListener(requireActivity()) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information

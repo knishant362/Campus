@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.UserActivity">
 
-
-
     <fragment
         android:id="@+id/user_nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -19,4 +17,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/user_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

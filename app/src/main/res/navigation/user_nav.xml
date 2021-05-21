@@ -70,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.trendster.campus.ui.fragment.user.WelcomeFragment"
+        android:name="com.trendster.campus.ui.fragment.user.welcome.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action

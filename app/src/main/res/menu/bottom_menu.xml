@@ -4,13 +4,13 @@
     <item
         android:id="@+id/scheduleFragment"
         android:title="Schedule"
-        android:icon="@drawable/ic_today"
+        android:icon="@drawable/ic_cc"
         />
 
     <item
         android:id="@+id/subjectsFragment"
         android:title="Subjects"
-        android:icon="@drawable/ic_books"
+        android:icon="@drawable/ic_list"
         />
 
     <item

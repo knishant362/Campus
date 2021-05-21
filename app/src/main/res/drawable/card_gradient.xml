@@ -1,0 +1,19 @@
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="@color/card_blue_dark"
+        android:endColor="@color/white"
+        android:angle="90"/>
+
+    <corners android:bottomLeftRadius="12dp"
+        android:bottomRightRadius="12dp"
+        android:topRightRadius="12dp"
+        android:topLeftRadius="12dp"/>
+
+    <padding
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp"
+        android:bottom="1dp"/>
+
+
+</shape>

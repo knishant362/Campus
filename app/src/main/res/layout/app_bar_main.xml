@@ -7,18 +7,18 @@
     tools:context=".ui.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp"
+        android:background="@color/white"
+        app:elevation="0dp"
         android:theme="@style/Theme.Campus.AppBarOverlay">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:title="Campus"
             android:layout_height="match_parent"
-            app:popupTheme="@style/Theme.Campus.PopupOverlay" >
-
+            app:popupTheme="@style/Theme.Campus.PopupOverlay">
 
             <ImageView
                 android:id="@+id/btnDrawer"
@@ -37,20 +37,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Campus"
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:fontFamily="@font/product_sans_bold"
+                android:text="Dashboard"
+                android:textColor="@color/black"
+                android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="@+id/btnDrawer"
-                app:layout_constraintStart_toEndOf="@+id/btnDrawer"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btnDrawer" />
 
             <ImageView
                 android:id="@+id/btnProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="right"
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_profile"
+                app:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
