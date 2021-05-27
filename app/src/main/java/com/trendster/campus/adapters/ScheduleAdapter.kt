@@ -1,14 +1,15 @@
 package com.trendster.campus.adapters
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.DocumentSnapshot
 import com.trendster.campus.R
 import com.trendster.campus.databinding.ScheduleRowLayoutBinding
@@ -43,15 +44,39 @@ class ScheduleAdapter : RecyclerView.Adapter<ScheduleAdapter.MyViewHolder>() {
             txtWSubject.text = data?.get("subjectName") as CharSequence?
             txtWVenue.text = data?.get("roomNo") as CharSequence?
 
-            materialCardView2.radius = 14F
-            lectureType.text = data?.get("TYPE") as CharSequence?
+            chipLectureType.text = data?.get("TYPE") as CharSequence?
 
-//            setColors(
-//                checkColor(position, holder.itemView.context),
-//                materialCardView2,
-//                timechip
-//            )
         }
+    }
+
+    private fun checkColor(
+        position: Int,
+    ): HashMap<String, Int> {
+
+        val colorMap: HashMap<String, Int> = HashMap()
+        when (position) {
+            1 -> {
+                colorMap["light"] = R.color.p_purple_light
+                colorMap["dark"] = R.color.p_purple_dark
+            }
+            2 -> {
+                colorMap["light"] = R.color.p_green_light
+                colorMap["dark"] = R.color.p_green_dark
+            }
+            3 -> {
+                colorMap["light"] = R.color.p_red_light
+                colorMap["dark"] = R.color.p_red_dark
+            }
+            4 -> {
+                colorMap["light"] = R.color.p_blue_light
+                colorMap["dark"] = R.color.p_blue_dark
+            }
+            else -> {
+                colorMap["light"] = R.color.p_purple_light
+                colorMap["dark"] = R.color.p_purple_dark
+            }
+        }
+        return colorMap
     }
 
     private fun timeString(hour: Long, minute: Long): CharSequence? {
@@ -67,60 +92,6 @@ class ScheduleAdapter : RecyclerView.Adapter<ScheduleAdapter.MyViewHolder>() {
         else minute.toString()
 
         return "$finalHr:$finalMint $amPm"
-    }
-
-    private fun setColors(
-        colorMap: HashMap<String, Any>,
-        materialCardView: CardView,
-        timeChip: TextView
-    ) {
-        val colorDark = colorMap["dark"] as String
-        val colorLight = colorMap["light"] as Int
-
-//        materialCardView.setCardBackgroundColor(Color.parseColor(colorDark))
-//        timeChip.setChipBackgroundColorResource(colorLight)
-    }
-
-    private fun checkColor(
-        position: Int,
-        context: Context
-    ): HashMap<String, Any> {
-
-        val colorMap: HashMap<String, Any> = HashMap()
-        colorMap["dark"] = "#4217A7"
-        colorMap["light"] = ContextCompat.getColor(context, R.color.card_blue_light)
-        var pos = position + 1
-        if (position> 5) {
-            pos = position % 5
-        }
-        Log.d("MyChip", "$pos , $position")
-        when (pos) {
-            1 -> {
-                colorMap["dark"] = "#375E97"
-                colorMap["light"] = R.color.card_blue_light
-            }
-            2 -> {
-                colorMap["dark"] = "#FB6542"
-                colorMap["light"] = R.color.card_orange_light
-            }
-            3 -> {
-                colorMap["dark"] = "#9BC01C"
-                colorMap["light"] = R.color.card_green_light
-            }
-            4 -> {
-                colorMap["dark"] = "#7E57C2"
-                colorMap["light"] = R.color.card_purple_light
-            }
-            5 -> {
-                colorMap["dark"] = "#DAA633"
-                colorMap["light"] = R.color.card_yellow_light
-            }
-            else -> {
-                colorMap["dark"] = "#4217A7"
-                colorMap["light"] = R.color.card_blue_light
-            }
-        }
-        return colorMap
     }
 
     override fun getItemCount(): Int {

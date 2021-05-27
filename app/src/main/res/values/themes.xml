@@ -13,6 +13,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="floatingActionButtonStyle">@style/FloatActionButtonStyle</item>
     </style>
 
     <style name="Theme.Campus.NoActionBar">
@@ -29,4 +30,23 @@
         <item name="checkedIconTint">@color/light_blue_900</item>
 
     </style>
+
+    <style name="FloatActionButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/FabShapeStyle</item>
+
+    </style>
+    <style name="FabShapeStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">20%</item>
+
+    </style>
+
+    <style name="CustomChipStyleSubjects" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipStrokeColor">@color/light_blue_600</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipBackgroundColor">@color/p_blue_light</item>
+        <item name="android:textColor">@color/light_blue_600</item>
+        <item name="checkedIconTint">@color/light_blue_600</item>
+
+    </style>
+
 </resources>

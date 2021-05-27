@@ -41,12 +41,12 @@ class AttendanceAdapter : RecyclerView.Adapter<AttendanceAdapter.MyViewHolder>()
                     txtAttendedClasses.text = showPercent
                     txtSubName.text = docs.id
                     attendanceChart.progress = percentage
-                    setColors(
-                        holder.itemView.context,
-                        checkImage(position),
-                        cardImages,
-                        txtAttendedClasses
-                    )
+//                    setColors(
+//                        holder.itemView.context,
+//                        checkImage(position),
+//                        cardImages,
+//                        txtAttendedClasses
+//                    )
                 }
             }
         }

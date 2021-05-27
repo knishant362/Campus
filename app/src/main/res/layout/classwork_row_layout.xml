@@ -31,7 +31,7 @@
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
+                android:id="@+id/fabSchedule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -75,8 +75,8 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
-                app:layout_constraintTop_toTopOf="@+id/floatingActionButton" />
+                app:layout_constraintStart_toEndOf="@+id/fabSchedule"
+                app:layout_constraintTop_toTopOf="@+id/fabSchedule" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

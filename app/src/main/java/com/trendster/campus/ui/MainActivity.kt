@@ -3,7 +3,9 @@ package com.trendster.campus.ui
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         drawerMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
+
 
         binding.appBar.btnProfile.setOnClickListener {
             val currentFrag = navController.currentDestination?.label as String

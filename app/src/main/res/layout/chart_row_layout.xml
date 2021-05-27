@@ -1,137 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/attendanceCard"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="190dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="12dp"
+    android:backgroundTint="@color/p_blue_dark"
+    app:cardCornerRadius="28dp"
+    app:cardElevation="5dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/card_images"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_7"
-                app:layout_constraintBottom_toBottomOf="@+id/attendanceCard"
-                app:layout_constraintEnd_toEndOf="@+id/attendanceCard"
-                app:layout_constraintStart_toStartOf="@+id/attendanceCard"
-                app:layout_constraintTop_toTopOf="@+id/attendanceCard" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:scaleType="centerCrop"
-                android:background="@color/light_blue_600"
-                android:alpha="0.3"
-                app:layout_constraintBottom_toBottomOf="@+id/attendanceCard"
-                app:layout_constraintEnd_toEndOf="@+id/attendanceCard"
-                app:layout_constraintStart_toStartOf="@+id/attendanceCard"
-                app:layout_constraintTop_toTopOf="@+id/attendanceCard" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_gradient"
+            >
 
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/attendanceCard"
+            <TextView
+                android:id="@+id/txtAttPercent"
                 android:layout_width="wrap_content"
-                android:layout_height="170dp"
-                android:backgroundTint="#002D2B4D"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/product_sans_medium"
+                android:text="75%"
+                android:textColor="@color/p_blue_light"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/attendance_chart"
+                app:layout_constraintEnd_toEndOf="@+id/attendance_chart"
+                app:layout_constraintStart_toStartOf="@+id/attendance_chart"
+                app:layout_constraintTop_toTopOf="@+id/attendance_chart" />
+
+            <TextView
+                android:id="@+id/txtAttendedClasses"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/product_sans_regular"
+                android:text="17/26"
+                android:textColor="@color/p_blue_light"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/txtSubName"
+                app:layout_constraintTop_toBottomOf="@+id/txtSubName" />
+
+            <jp.co.recruit_mp.android.circleprogressview.CircleProgressView
+                android:id="@+id/attendance_chart"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:CircleProgressView_backgroundColor="#5577C1"
+                app:CircleProgressView_foregroundColor="@color/p_blue_light"
+                app:CircleProgressView_progress="0.60"
+                app:CircleProgressView_stroke="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtSubName"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="14dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/product_sans_medium"
+                android:maxLines="2"
+                android:text="Data Analysis using R"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/attendance_chart" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-
-                    <TextView
-                        android:id="@+id/txtAttPercent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/product_sans_bold"
-                        android:text="75%"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/attendance_chart"
-                        app:layout_constraintEnd_toEndOf="@+id/attendance_chart"
-                        app:layout_constraintStart_toStartOf="@+id/attendance_chart"
-                        app:layout_constraintTop_toTopOf="@+id/attendance_chart" />
-
-                    <TextView
-                        android:id="@+id/txtAttendedClasses"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
-                        android:fontFamily="@font/product_sans_bold"
-                        android:text="17/26"
-                        android:textColor="@color/white"
-                        android:textSize="22sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/attendance_chart"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/attendance_chart" />
-
-                    <jp.co.recruit_mp.android.circleprogressview.CircleProgressView
-                        android:id="@+id/attendance_chart"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        app:CircleProgressView_backgroundColor="#DEB0AEAE"
-                        app:CircleProgressView_foregroundColor="@color/white"
-                        app:CircleProgressView_progress="0.60"
-                        app:CircleProgressView_stroke="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/txtSubName"
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/product_sans_bold"
-                        android:maxLines="2"
-                        android:text="Data Analysis using R"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/attendance_chart"
-                        app:layout_constraintTop_toBottomOf="@+id/attendance_chart" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>

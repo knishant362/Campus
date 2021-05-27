@@ -40,12 +40,12 @@ class ScheduleFragment : Fragment() {
         _binding = FragmentScheduleBinding.inflate(inflater, container, false)
         /** Attendance */
         attendanceAdapter = AttendanceAdapter()
-        attendanceRecyclerView = binding.attendanceRecyclerView
+        attendanceRecyclerView = binding.attendanceRecycler
         attendanceRecyclerView.adapter = attendanceAdapter
         attendanceRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         /** Schedule */
-        recyclerView = binding.ScheduleRecyclerView
+        recyclerView = binding.scheduleRecycler
         mAdapter = ScheduleAdapter()
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -53,7 +53,8 @@ class ScheduleFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         auth.currentUser?.uid?.let { Log.d("FIREBASEUSER", it) }
-        auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "today", mainViewModel.todayDay()) }
+//        auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "today", mainViewModel.todayDay()) }
+        auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "today", "Monday") }
 
         auth.currentUser?.let { mainViewModel.loadAttendance(it.uid) }
         mainViewModel.readAttendance.observe(
@@ -75,7 +76,7 @@ class ScheduleFragment : Fragment() {
             }
         )
 
-        binding.imgWeekic.setOnClickListener {
+        binding.icWeekView.setOnClickListener {
             findNavController().navigate(R.id.action_scheduleFragment_to_weekScheduleFragment)
         }
 

@@ -26,7 +26,7 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        notifRecyclerView = binding.notifRecycler
+        notifRecyclerView = binding.notificationsRecycler
         mAdapter = NotificationAdapter()
         notifRecyclerView.adapter = mAdapter
         notifRecyclerView.layoutManager = LinearLayoutManager(requireContext())

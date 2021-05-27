@@ -33,8 +33,8 @@ class MainViewModel : ViewModel() {
     val readSchedule: LiveData<List<DocumentSnapshot?>>
         get() = _readSchedule
 
-    private val _readSubjects = MutableLiveData<List<DocumentSnapshot?>>()
-    val readSubjects: LiveData<List<DocumentSnapshot?>>
+    private val _readSubjects = MutableLiveData<Pair<List<DocumentSnapshot?>,String>>()
+    val readSubjects: LiveData<Pair<List<DocumentSnapshot?>, String>>
         get() = _readSubjects
 
     private val _readUserProfile = MutableLiveData<DocumentSnapshot?>()
@@ -45,14 +45,15 @@ class MainViewModel : ViewModel() {
     val readNotifications: LiveData<List<DocumentSnapshot?>>
         get() = _readNotifications
 
+    private val _readValues = MutableLiveData<Pair<String, String>>()
+    val readValues: LiveData<Pair<String, String>>
+        get() = _readValues
+
     fun loadRequest(userUID: String, type: String, requiredDay: String) {
         firestore.collection("Users").document(userUID)
             .addSnapshotListener { value, error ->
-                val UID = value?.get(USER_UID)?.toString()
                 val userBranch = value?.get(USER_BRANCH).toString()
                 val userSemester = value?.get(USER_SEMESTER).toString()
-                val accessLevel = value?.get(ACCESS_LEVEL).toString()
-//                _readAccessLevel.postValue(accessLevel)
 
                 when (type) {
                     "today" -> {
@@ -79,12 +80,15 @@ class MainViewModel : ViewModel() {
             }
     }
 
-    private fun loadSubjects(userBranch: String, userSemester: String) {
+    fun loadSubjects(userBranch: String, userSemester: String) {
+
+        Log.d("NIh", userBranch+userSemester)
+
         firestore.collection("Data").document(userBranch)
             .collection(userSemester).document("Subjects")
             .collection("list").get().addOnSuccessListener { myData ->
                 val docs = myData.documents
-                _readSubjects.postValue(docs)
+                _readSubjects.postValue(Pair(docs, "$userBranch, $userSemester"))
                 Log.d("loadSubjects", myData.toString())
             }
     }
@@ -157,5 +161,9 @@ class MainViewModel : ViewModel() {
                 val docs = value?.documents
                 _readNotifications.postValue(docs!!)
             }
+    }
+
+    fun sortSubject(branchChip: String, semesterChip: String) {
+        _readValues.postValue(Pair(branchChip, semesterChip))
     }
 }

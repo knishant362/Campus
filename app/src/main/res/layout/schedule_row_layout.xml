@@ -1,100 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/materialCardView2"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/secndfr"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/materialCardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="28dp"
+    app:cardElevation="5dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="6dp"
-                app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
-                app:layout_constraintStart_toStartOf="@+id/floatingActionButton"
-                app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
-                app:srcCompat="@drawable/ic_baseline_book_24"
-                app:tint="@color/card_yellow_bright" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
+                android:id="@+id/fabSchedule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:backgroundTint="@color/light_blue_600"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:clickable="true"
-                app:elevation="0dp"
-                android:scaleType="center"
+                android:src="@drawable/ic_schee"
+                android:tint="@color/light_blue_600"
+                android:backgroundTint="@color/p_blue_light"
                 app:borderWidth="0dp"
-                app:backgroundTintMode="screen"
-                app:fabCustomSize="26dp"
+                app:elevation="0dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:maxImageSize="14dp"
-                app:srcCompat="@drawable/ic_mynotice"
-                app:tint="@color/white" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/timechip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/product_sans_regular"
                 android:text="09:50 AM"
-                android:textColor="@color/text_grey"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/fabSchedule"
+                app:layout_constraintTop_toBottomOf="@+id/txtWVenue" />
 
 
             <TextView
                 android:id="@+id/txtWSubject"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/product_sans_regular"
                 android:maxLines="1"
                 android:text="AUTOMATION"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+                app:layout_constraintStart_toEndOf="@+id/fabSchedule"
+                app:layout_constraintTop_toTopOf="@+id/fabSchedule" />
 
             <ImageView
                 android:id="@+id/imgWFaculty"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="@+id/timechip"
-                app:layout_constraintTop_toBottomOf="@+id/timechip"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/txtWSubject"
+                app:layout_constraintTop_toBottomOf="@+id/txtWSubject"
                 app:srcCompat="@drawable/ic_faculty"
                 app:tint="#666565" />
 
@@ -116,8 +97,6 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imgWFaculty"
                 app:layout_constraintTop_toBottomOf="@+id/imgWFaculty"
                 app:srcCompat="@drawable/ic_venue"
@@ -136,22 +115,22 @@
                 app:layout_constraintStart_toEndOf="@+id/imgRoomNO"
                 app:layout_constraintTop_toTopOf="@+id/imgRoomNO" />
 
-            <TextView
-                android:id="@+id/lectureType"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLectureType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:fontFamily="@font/product_sans_medium"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="4dp"
                 android:text="Weekly Report"
-                android:textColor="@color/light_blue_600"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton"
-                app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
-                app:layout_constraintTop_toTopOf="@+id/floatingActionButton" />
+                app:chipBackgroundColor="@color/p_blue_light"
+                app:chipIcon="@drawable/ic_baseline_videocam_24"
+                app:chipStartPadding="10dp"
+                app:chipIconTint="@color/light_blue_600"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
