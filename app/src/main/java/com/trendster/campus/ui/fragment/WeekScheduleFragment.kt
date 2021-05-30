@@ -22,6 +22,7 @@ class WeekScheduleFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var mAdapter: ScheduleAdapter
     private lateinit var auth: FirebaseAuth
+    private var day = "Monday"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +38,10 @@ class WeekScheduleFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val myAuth = auth.currentUser?.uid
-        mainViewModel.readSchedule.observe(
+        if (myAuth != null) {
+            mainViewModel.loadScheduleRequest(myAuth, "week", day)
+        }
+        mainViewModel.readScheduleWeek.observe(
             viewLifecycleOwner,
             {
                 mAdapter.setData(it)
@@ -49,7 +53,8 @@ class WeekScheduleFragment : Fragment() {
             val chip = group.findViewById<Chip>(checkedId)
             val selectedDay = chip.text.toString()
             if (myAuth != null) {
-                mainViewModel.loadRequest(myAuth, "week", selectedDay)
+                day = selectedDay
+                mainViewModel.loadScheduleRequest(myAuth, "week", day)
             }
         }
 

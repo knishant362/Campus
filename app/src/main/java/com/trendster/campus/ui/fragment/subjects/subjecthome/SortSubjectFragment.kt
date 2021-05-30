@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
+import com.google.firebase.auth.FirebaseAuth
 import com.trendster.campus.databinding.FragmentSortSubjectBinding
 import com.trendster.campus.viewmodels.mainviewmodel.MainViewModel
 
@@ -18,6 +20,7 @@ class SortSubjectFragment : BottomSheetDialogFragment() {
     private var branchChip = "CSE"
     private var semesterChip = "1"
     private val mainViewModel: MainViewModel by activityViewModels()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +29,7 @@ class SortSubjectFragment : BottomSheetDialogFragment() {
     ): View? {
 
         _binding = FragmentSortSubjectBinding.inflate(inflater, container, false)
+        auth = FirebaseAuth.getInstance()
 
         binding.chipGroupAddBranch.setOnCheckedChangeListener { group, checkedId ->
             val chip = group.findViewById<Chip>(checkedId)
@@ -39,7 +43,8 @@ class SortSubjectFragment : BottomSheetDialogFragment() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            mainViewModel.sortSubject(branchChip, semesterChip)
+            Toast.makeText(requireContext(), "Nishant :$branchChip$ semesterChip", Toast.LENGTH_SHORT).show()
+            mainViewModel.sortSubject(requireContext(), auth.currentUser!!.uid, branchChip, semesterChip)
             findNavController().navigateUp()
         }
 

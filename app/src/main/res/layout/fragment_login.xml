@@ -59,6 +59,8 @@
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
                                     android:lines="1"
                                     android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -93,9 +95,8 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <Button
+                        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
                             android:id="@+id/btnLogin"
-                            style="@style/Widget.MaterialComponents.FloatingActionButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -103,14 +104,17 @@
                             android:layout_marginEnd="16dp"
                             android:backgroundTint="@color/light_blue_600"
                             android:fontFamily="@font/product_sans_regular"
-                            android:padding="14dp"
-                            android:stateListAnimator="@null"
                             android:text="Login"
+                            android:textColor="@color/white"
                             android:textAllCaps="false"
                             android:textSize="16sp"
+                            app:spinning_bar_width="4dp"
+                            app:spinning_bar_color="#FFF"
+                            app:spinning_bar_padding="6dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />
+
 
 
                         <TextView
@@ -173,11 +177,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginEnd="20dp"
                             android:fontFamily="@font/product_sans_regular"
                             android:text="Forgot Password?"
                             android:textSize="16sp"
-                            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/etPasswordd" />
 
 
@@ -188,6 +192,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="24dp"
                             android:src="@drawable/ic_faculty"
+                            android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:tint="@color/light_blue_600" />

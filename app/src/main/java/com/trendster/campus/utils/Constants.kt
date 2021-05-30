@@ -6,6 +6,8 @@ const val DEFAULT_USER_SEMESTER = "6"
 /** Firestore*/
 const val USER_BRANCH = "userBranch"
 const val USER_SEMESTER = "userSemester"
+const val TEMP_USER_BRANCH = "tempBranch"
+const val TEMP_USER_SEMESTER = "tempSemester"
 const val USER_UID = "userUID"
 const val USER_ROLL_NO = "rollNo"
 const val USER_NAME = "userName"
@@ -19,6 +21,7 @@ const val SUBJECT_DESC = "subjectDesc"
 /** Study Material Collection*/
 const val COLL_PDF_TITLE = "pdfName"
 const val COLL_PDF_URL = "pdfUrl"
+const val COLL_PDF_DESC = "pdfDesc"
 
 /**Classwork*/
 const val ASSIGNMENT_TITLE = "assignmentTitle"

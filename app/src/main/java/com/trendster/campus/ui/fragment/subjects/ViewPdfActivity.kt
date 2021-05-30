@@ -27,6 +27,7 @@ class ViewPdfActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityViewPdfBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         pdfUrl = intent.getStringExtra(COLL_PDF_URL)
         pdfTitle = intent.getStringExtra(COLL_PDF_TITLE)
@@ -97,5 +98,10 @@ class ViewPdfActivity : AppCompatActivity() {
         } else {
             context.applicationContext.filesDir.absolutePath
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

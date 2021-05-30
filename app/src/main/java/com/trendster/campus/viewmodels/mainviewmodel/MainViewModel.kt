@@ -33,7 +33,11 @@ class MainViewModel : ViewModel() {
     val readSchedule: LiveData<List<DocumentSnapshot?>>
         get() = _readSchedule
 
-    private val _readSubjects = MutableLiveData<Pair<List<DocumentSnapshot?>,String>>()
+    private val _readScheduleWeek = MutableLiveData<List<DocumentSnapshot?>>()
+    val readScheduleWeek: LiveData<List<DocumentSnapshot?>>
+        get() = _readScheduleWeek
+
+    private val _readSubjects = MutableLiveData<Pair<List<DocumentSnapshot?>, String>>()
     val readSubjects: LiveData<Pair<List<DocumentSnapshot?>, String>>
         get() = _readSubjects
 
@@ -49,41 +53,56 @@ class MainViewModel : ViewModel() {
     val readValues: LiveData<Pair<String, String>>
         get() = _readValues
 
-    fun loadRequest(userUID: String, type: String, requiredDay: String) {
+    var selectedUserBranch = "CSE"
+    var selectedUserSemester = "1"
+
+    fun loadScheduleRequest(userUID: String, type: String, requiredDay: String) {
         firestore.collection("Users").document(userUID)
             .addSnapshotListener { value, error ->
                 val userBranch = value?.get(USER_BRANCH).toString()
                 val userSemester = value?.get(USER_SEMESTER).toString()
-
-                when (type) {
-                    "today" -> {
-                        loadSchedule(userBranch, userSemester, requiredDay)
-                    }
-                    "subjects" -> {
-                        loadSubjects(userBranch, userSemester)
-                    }
-                    "week" -> {
-                        // change here to today() later
-                        loadSchedule(userBranch, userSemester, requiredDay)
-                    }
-                }
+                selectedUserBranch = userBranch
+                selectedUserSemester = userSemester
+                loadSchedule(userBranch, userSemester, requiredDay, type)
             }
     }
 
-    private fun loadSchedule(userBranch: String, userSemester: String, requiredDay: String) {
+    fun loadRequest(userUID: String) {
+        firestore.collection("Users").document(userUID)
+            .addSnapshotListener { value, error ->
+                val userBranch = value?.get(TEMP_USER_BRANCH).toString()
+                val userSemester = value?.get(TEMP_USER_SEMESTER).toString()
+                selectedUserBranch = userBranch
+                selectedUserSemester = userSemester
+                loadSubjects(userBranch, userSemester)
+            }
+    }
+
+    private fun loadSchedule(
+        userBranch: String,
+        userSemester: String,
+        requiredDay: String,
+        type: String
+    ) {
         firestore.collection("Data").document(userBranch)
             .collection(userSemester).document("Schedule")
             .collection(requiredDay).get().addOnSuccessListener { data ->
                 val docs = data.documents
-                _readSchedule.postValue(docs)
+                when (type) {
+                    "today" -> {
+                        _readSchedule.postValue(docs)
+                    }
+                    "week" -> {
+                        _readScheduleWeek.postValue(docs)
+                    }
+                }
+
                 Log.d("loadSchedule", docs.size.toString())
             }
     }
 
     fun loadSubjects(userBranch: String, userSemester: String) {
-
-        Log.d("NIh", userBranch+userSemester)
-
+        Log.d("NIh", userBranch + userSemester)
         firestore.collection("Data").document(userBranch)
             .collection(userSemester).document("Subjects")
             .collection("list").get().addOnSuccessListener { myData ->
@@ -147,11 +166,11 @@ class MainViewModel : ViewModel() {
             .update(data as Map<String, Any>).addOnSuccessListener {
                 Toast.makeText(context, " Update Successful", Toast.LENGTH_SHORT).show()
                 Log.d("saveUserData", "Update Success")
-                findNavController.popBackStack()
+                findNavController.navigateUp()
             }.addOnFailureListener {
                 Toast.makeText(context, " Some Error Occurred", Toast.LENGTH_SHORT).show()
                 Log.d("saveUserData", it.message!!)
-                findNavController.popBackStack()
+                findNavController.navigateUp()
             }
     }
 
@@ -163,7 +182,18 @@ class MainViewModel : ViewModel() {
             }
     }
 
-    fun sortSubject(branchChip: String, semesterChip: String) {
-        _readValues.postValue(Pair(branchChip, semesterChip))
+    fun sortSubject(context: Context, userUID: String, branchChip: String, semesterChip: String) {
+        val data = HashMap<String, String>()
+        data[TEMP_USER_BRANCH] = branchChip
+        data[TEMP_USER_SEMESTER] = semesterChip
+        firestore.collection("Users").document(userUID)
+            .update(data as Map<String, Any>).addOnSuccessListener {
+                Toast.makeText(context, " Update Successful", Toast.LENGTH_SHORT).show()
+                Log.d("saveUserData", "Update Success")
+                _readValues.postValue(Pair(branchChip, semesterChip))
+            }.addOnFailureListener {
+                Toast.makeText(context, " Some Error Occurred", Toast.LENGTH_SHORT).show()
+                Log.d("saveUserData", it.message!!)
+            }
     }
 }

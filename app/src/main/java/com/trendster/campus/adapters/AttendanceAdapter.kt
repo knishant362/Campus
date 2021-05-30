@@ -1,12 +1,10 @@
 package com.trendster.campus.adapters
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentSnapshot
 import com.trendster.campus.R
@@ -41,24 +39,20 @@ class AttendanceAdapter : RecyclerView.Adapter<AttendanceAdapter.MyViewHolder>()
                     txtAttendedClasses.text = showPercent
                     txtSubName.text = docs.id
                     attendanceChart.progress = percentage
-//                    setColors(
-//                        holder.itemView.context,
-//                        checkImage(position),
-//                        cardImages,
-//                        txtAttendedClasses
-//                    )
+                    setColors(
+                        checkImage(position),
+                        imageLayout,
+                    )
                 }
             }
         }
     }
 
     private fun setColors(
-        context: Context,
         myImage: Int,
-        cardImages: ImageView,
-        percentText: TextView
+        cardImages: ConstraintLayout,
     ) {
-        cardImages.setImageResource(myImage)
+        cardImages.setBackgroundResource(myImage)
     }
 
     private fun checkImage(
@@ -70,20 +64,13 @@ class AttendanceAdapter : RecyclerView.Adapter<AttendanceAdapter.MyViewHolder>()
         }
         Log.d("MyChip", "$pos , $position")
         return when (pos) {
-//            1 -> Pair(R.color.card_blue_dark, R.color.card_blue_light)
-//            2 -> Pair(R.color.card_orange, R.color.card_orange_light)
-//            3 -> Pair(R.color.card_green, R.color.card_green_light)
-//            4 -> Pair(R.color.card_purple, R.color.card_purple_light)
-//            5 -> Pair(R.color.card_yellow, R.color.card_yellow_light)
-            1 -> R.drawable.ic_1
-            2 -> R.drawable.ic_2
-            3 -> R.drawable.ic_7
-            4 -> R.drawable.ic_4
-            5 -> R.drawable.ic_5
-            6 -> R.drawable.ic_6
-            7 -> R.drawable.ic_3
-            8 -> R.drawable.ic_8
-            else -> R.drawable.ic_1
+            1 -> R.drawable.ic_green_card
+            2 -> R.drawable.ic_pink_card
+            3 -> R.drawable.ic_purple_card
+            4 -> R.drawable.ic_black_card
+            5 -> R.drawable.ic_orange_card
+            6 -> R.drawable.ic_yellow_card
+            else -> R.drawable.ic_green_card
         }
     }
 

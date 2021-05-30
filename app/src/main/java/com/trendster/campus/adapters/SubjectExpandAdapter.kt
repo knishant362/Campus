@@ -12,6 +12,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.trendster.campus.R
 import com.trendster.campus.databinding.ExpandCollRowLayoutBinding
 import com.trendster.campus.ui.fragment.subjects.ViewPdfActivity
+import com.trendster.campus.utils.COLL_PDF_DESC
 import com.trendster.campus.utils.COLL_PDF_TITLE
 import com.trendster.campus.utils.COLL_PDF_URL
 
@@ -35,8 +36,10 @@ class SubjectExpandAdapter : RecyclerView.Adapter<SubjectExpandAdapter.MyViewHol
 
                 val pdfUrl = data.get(COLL_PDF_URL) as CharSequence?
                 val pdfTitle = data.get(COLL_PDF_TITLE) as CharSequence?
+                val pdfDesc = data.get(COLL_PDF_DESC) as CharSequence?
 
-                txtItemTitle.text = pdfTitle
+                txtItemTitle.text = data.id
+                txtItemDesc.text = pdfDesc
                 if (pdfUrl != null) {
                     Log.d("HFHF", pdfUrl as String)
                     btnDownloadPdf.setOnClickListener {
@@ -44,8 +47,7 @@ class SubjectExpandAdapter : RecyclerView.Adapter<SubjectExpandAdapter.MyViewHol
                         intent.data = Uri.parse(pdfUrl as String?)
                         holder.itemView.context.startActivity(intent)
                     }
-                    rowLayout.setOnClickListener {
-
+                    cardItem.setOnClickListener {
                         Toast.makeText(holder.itemView.context, pdfTitle, Toast.LENGTH_SHORT).show()
 
 //                     if (pdfUrl != null && pdfTitle != null){

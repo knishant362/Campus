@@ -91,6 +91,8 @@
                 android:padding="14dp"
                 android:stateListAnimator="@null"
                 android:text="Login"
+                android:clickable="true"
+                android:focusable="true"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/btnGoToSignUp"
@@ -114,6 +116,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/light_blue_600"
                 android:textSize="16sp"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

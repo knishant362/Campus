@@ -43,8 +43,8 @@ class SubjectsFragment : Fragment() {
 
         if (turn == 1) {
             auth.currentUser?.let {
-//                Toast.makeText(requireContext(), "Called", Toast.LENGTH_SHORT).show()
-                mainViewModel.loadRequest(it.uid, "subjects", "requiredDay")
+                Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                mainViewModel.loadRequest(it.uid)
                 turn++
             }
         }
@@ -69,7 +69,7 @@ class SubjectsFragment : Fragment() {
             viewLifecycleOwner,
             {
                 recyclerView.showShimmer()
-//                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
                 mainViewModel.loadSubjects(it.first, it.second)
             }
         )

@@ -31,6 +31,8 @@ class UserViewModel : ViewModel() {
         data[USER_ROLL_NO] = userRollNo
         data[USER_BRANCH] = userBranch
         data[USER_SEMESTER] = userSemester
+        data[TEMP_USER_BRANCH] = userBranch
+        data[TEMP_USER_SEMESTER] = userSemester
         data[ACCESS_LEVEL] = accessLevel
 
         firestore.collection("Users").document(userUID)

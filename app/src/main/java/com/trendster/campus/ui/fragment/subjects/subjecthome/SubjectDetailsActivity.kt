@@ -2,6 +2,7 @@ package com.trendster.campus.ui.fragment.subjects.subjecthome
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -35,12 +36,19 @@ class SubjectDetailsActivity : AppCompatActivity() {
         val subject = intent.getStringExtra(SUBJECT_NAME)
         val faculty = intent.getStringExtra(FACULTY_NAME)
         val subjectDesc = intent.getStringExtra(SUBJECT_DESC)
+
+        Toast.makeText(this, subject, Toast.LENGTH_SHORT).show()
+
         if (subject != null && faculty != null && subjectDesc != null) {
             auth.currentUser?.uid?.let { subjectViewModel.userAuthdata(subject, faculty, subjectDesc, it) }
             Log.d("heKL", subject)
         }
-
         navController = findNavController(R.id.nav_host_subject_content)
         binding.subjectBottomNav.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

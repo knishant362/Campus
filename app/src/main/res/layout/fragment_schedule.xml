@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
@@ -12,7 +13,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/helloLayout11"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/helloLayout"
+            android:background="@drawable/bottom_rounded_circle"/>
 
             <RelativeLayout
                 android:id="@+id/helloLayout"
@@ -20,8 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/bottom_rounded_circle"
-                android:backgroundTint="#DDEDFB">
+                android:background="#DDEDFB">
 
                 <TextView
                     android:id="@+id/studentName"
@@ -92,15 +99,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_right__arrow"
-                android:textStyle="bold"
                 android:layout_below="@id/attendanceRecycler"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="16dp"
-                android:layout_marginTop="15dp"
-                android:textSize="20sp"
-                android:textColor="@color/black" />
+                android:layout_marginTop="15dp" />
 
             <com.todkars.shimmer.ShimmerRecyclerView
+                android:id="@+id/scheduleRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -108,10 +113,39 @@
                 android:scrollbars="vertical"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/stumateNews"
-                android:layout_marginTop="15dp"
-                android:id="@+id/scheduleRecycler" />
+                android:layout_marginTop="15dp" />
 
 
+            <TextView
+                android:id="@+id/imgNoClasses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/scheduleRecycler"
+                android:layout_marginTop="60dp"
+                android:textColor="@color/light_blue_600"
+                android:text="No Classes for Today"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:fontFamily="@font/product_sans_bold"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                />
+
+            <ImageView
+                android:id="@+id/txtNoClasses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgNoClasses"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_no_classes"
+                android:layout_marginBottom="50dp"
+                android:layout_alignParentBottom="true"
+                />
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>

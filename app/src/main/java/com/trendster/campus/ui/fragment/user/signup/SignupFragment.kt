@@ -7,18 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.trendster.campus.R
 import com.trendster.campus.databinding.FragmentSignupBinding
-import com.trendster.campus.ui.MainActivity
+import com.trendster.campus.ui.fragment.onboarding.OnboardingActivity
 import com.trendster.campus.viewmodels.userviewmodel.UserViewModel
 
 class SignupFragment : Fragment() {
@@ -32,7 +31,7 @@ class SignupFragment : Fragment() {
     private lateinit var etRollNo: TextInputLayout
     private lateinit var etSemester: TextInputLayout
     private lateinit var etPassword: TextInputLayout
-    private lateinit var btnSignup: Button
+    private lateinit var btnSignup: CircularProgressButton
 
     private var branch = "CSE"
     private var semester = "1"
@@ -100,6 +99,7 @@ class SignupFragment : Fragment() {
                 }
                 else -> {
 
+                    btnSignup.startAnimation()
                     branch = etBranch.editText?.text.toString()
                     semester = etSemester.editText?.text.toString()
 
@@ -113,6 +113,7 @@ class SignupFragment : Fragment() {
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w("SIGNUP", "createUserWithEmail:failure", task.exception)
+                                btnSignup.stopAnimation()
                                 Toast.makeText(
                                     requireContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT
@@ -133,8 +134,9 @@ class SignupFragment : Fragment() {
     ) {
         if (user != null) {
             val accessLevel = "user"
-            userViewModel.saveUserData(user!!.uid, userName, userRollNo, userBranch, userSemester, accessLevel)
-            startActivity(Intent(requireContext(), MainActivity::class.java))
+            userViewModel.saveUserData(user.uid, userName, userRollNo, userBranch, userSemester, accessLevel)
+            btnSignup.stopAnimation()
+            startActivity(Intent(requireContext(), OnboardingActivity::class.java))
             requireActivity().finish()
         }
     }

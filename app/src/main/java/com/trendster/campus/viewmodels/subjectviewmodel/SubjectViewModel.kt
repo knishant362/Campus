@@ -10,9 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.trendster.campus.utils.USER_BRANCH
-import com.trendster.campus.utils.USER_SEMESTER
-import com.trendster.campus.utils.USER_UID
+import com.trendster.campus.utils.*
 
 class SubjectViewModel : ViewModel() {
 
@@ -50,16 +48,11 @@ class SubjectViewModel : ViewModel() {
     }
 
     fun loadCollection(userUID: String, subjectName: String) {
-
         firestore.collection("Users").document(userUID).addSnapshotListener { value, error ->
-
-            val UID = value?.get(USER_UID)?.toString()
-            val userBranch = value?.get(USER_BRANCH).toString()
-            val userSemester = value?.get(USER_SEMESTER).toString()
-
+            val userBranch = value?.get(TEMP_USER_BRANCH).toString()
+            val userSemester = value?.get(TEMP_USER_SEMESTER).toString()
             selectedUserBranch = userBranch
             selectedUserSemester = userSemester
-
             Log.d("loadData1", userBranch + userSemester)
             loadData(userBranch, userSemester, subjectName)
         }
@@ -74,17 +67,15 @@ class SubjectViewModel : ViewModel() {
 
                 val docs = value?.documents
                 _readCollection.postValue(docs!!)
-                Log.d("loadData", docs?.size.toString())
+                Log.d("loadData", docs.size.toString())
             }
     }
 
     fun loadRequest(userUID: String, selectedSubject: String) {
         firestore.collection("Users").document(userUID)
             .addSnapshotListener { value, error ->
-                val UID = value?.get(USER_UID)?.toString()
                 val userBranch = value?.get(USER_BRANCH).toString()
                 val userSemester = value?.get(USER_SEMESTER).toString()
-
                 loadClasswork(userBranch, userSemester, selectedSubject)
             }
     }

@@ -15,7 +15,7 @@
             android:checkable="false"
             android:title="Notice" />
         <item
-            android:id="@+id/aboutFragment"
+            android:id="@+id/aboutApp"
             android:icon="@drawable/ic_about"
             android:checkable="false"
             android:title="About" />

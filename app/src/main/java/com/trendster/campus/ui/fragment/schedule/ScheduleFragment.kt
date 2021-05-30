@@ -53,8 +53,8 @@ class ScheduleFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         auth.currentUser?.uid?.let { Log.d("FIREBASEUSER", it) }
-//        auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "today", mainViewModel.todayDay()) }
-        auth.currentUser?.let { mainViewModel.loadRequest(it.uid, "today", "Monday") }
+        auth.currentUser?.let { mainViewModel.loadScheduleRequest(it.uid, "today", mainViewModel.todayDay()) }
+//        auth.currentUser?.let { mainViewModel.loadScheduleRequest(it.uid, "today", "Monday") }
 
         auth.currentUser?.let { mainViewModel.loadAttendance(it.uid) }
         mainViewModel.readAttendance.observe(
@@ -70,9 +70,15 @@ class ScheduleFragment : Fragment() {
             viewLifecycleOwner,
             { myData ->
                 Log.d("FIREBASEUSER", myData.size.toString())
-                mAdapter.setData(myData)
-                recyclerView.hideShimmer()
-                mAdapter.notifyDataSetChanged()
+                if (myData.isEmpty()) {
+                    recyclerView.hideShimmer()
+                    binding.imgNoClasses.visibility = View.VISIBLE
+                    binding.txtNoClasses.visibility = View.VISIBLE
+                } else {
+                    mAdapter.setData(myData)
+                    recyclerView.hideShimmer()
+                    mAdapter.notifyDataSetChanged()
+                }
             }
         )
 
