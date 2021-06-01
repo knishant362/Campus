@@ -13,7 +13,42 @@
         android:layout_height="wrap_content">
 
 
-    <com.google.android.material.textfield.TextInputLayout
+        <ImageView
+            android:id="@+id/btnBackSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Let's Get Started!"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBackSignup" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Fill the details &amp; create your account"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etSignupEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
@@ -177,56 +212,28 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        <cn.xm.weidongjian.progressbuttonlib.ProgressButton
             android:id="@+id/btnSignup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="28dp"
             android:backgroundTint="@color/light_blue_600"
             android:fontFamily="@font/product_sans_regular"
             android:text="Sign Up"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="16sp"
-            app:spinning_bar_width="4dp"
-            app:spinning_bar_color="#FFF"
-            app:spinning_bar_padding="6dp"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/rounded_button"
             app:layout_constraintEnd_toEndOf="@+id/etPassword"
             app:layout_constraintStart_toStartOf="@+id/etPassword"
             app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
-    <ImageView
-        android:id="@+id/btnBackSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Let's Get Started!"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBackSignup" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Fill the details &amp; create your account"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
 
 
         <TextView
@@ -245,17 +252,18 @@
             app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
 
 
-    <TextView
-        android:id="@+id/btnGoToLoginHere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/product_sans_regular"
-        android:text=" Login here"
-        android:textColor="@color/light_blue_600"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/justTExt"
-        app:layout_constraintStart_toEndOf="@+id/justTExt"
-        app:layout_constraintTop_toTopOf="@+id/justTExt" />
+        <TextView
+            android:id="@+id/btnGoToLoginHere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/product_sans_regular"
+            android:text=" Login here"
+            android:textColor="@color/light_blue_600"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/justTExt"
+            app:layout_constraintStart_toEndOf="@+id/justTExt"
+            app:layout_constraintTop_toTopOf="@+id/justTExt" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

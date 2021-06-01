@@ -132,8 +132,9 @@
                     android:id="@+id/imgDSubjectProfile"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:scaleType="center"
-                    android:src="@drawable/background"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.9"
+                    android:src="@drawable/ic_blue_card"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

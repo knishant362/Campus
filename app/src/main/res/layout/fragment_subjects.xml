@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -86,8 +86,14 @@
 
         </RelativeLayout>
 
+            <View
+                android:id="@+id/helloLayout11"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/helloLayout"
+                android:background="@drawable/bottom_rounded_circle"/>
 
-        <RelativeLayout
+            <RelativeLayout
             android:id="@+id/hellLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,11 +109,58 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                app:shimmer_recycler_layout="@layout/subject_placeholder_layout"
+                app:shimmer_recycler_item_count="3"
                 android:layout_alignParentStart="true"
                 android:scrollbars="none"
                 android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
+
+            <TextView
+                android:id="@+id/imgNoClasses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="70dp"
+                android:textColor="@color/light_blue_600"
+                android:text="No Subjects Available"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_below="@id/helloLayout"
+                android:fontFamily="@font/product_sans_bold"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                />
+
+            <TextView
+                android:id="@+id/imgNoClasses2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgNoClasses"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/product_sans_regular"
+                android:text="Try changing Branch &amp; Semester"
+                android:textAlignment="center"
+                android:textColor="@color/text_grey"
+                android:textSize="14sp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/txtNoClasses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgNoClasses2"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_no_classes"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
         </RelativeLayout>
 

@@ -22,4 +22,9 @@ class UserActivity : AppCompatActivity() {
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

@@ -63,9 +63,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.scheduleFragment,
                 R.id.subjectsFragment,
                 R.id.notificationsFragment,
-//            R.id.profileFragment,
-                R.id.noticeFragment,
-                R.id.aboutFragment
             ),
             drawerLayout
         )
@@ -84,6 +81,11 @@ class MainActivity : AppCompatActivity() {
                     auth.signOut()
                     startActivity(Intent(this, UserActivity::class.java))
                     finish()
+                    true
+                }
+                R.id.noticeActivity -> {
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    startActivity(Intent(this, NoticeActivity::class.java))
                     true
                 }
                 R.id.aboutApp -> {

@@ -53,27 +53,10 @@
             android:id="@+id/action_notificationsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/aboutFragment"
-        android:name="com.trendster.campus.ui.fragment.about.AboutFragment"
-        android:label="About"
-        tools:layout="@layout/fragment_about" >
-        <action
-            android:id="@+id/action_aboutFragment_to_scheduleFragment"
-            app:destination="@id/scheduleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/noticeFragment"
-        android:name="com.trendster.campus.ui.fragment.notice.NoticeFragment"
-        android:label="Notice"
-        tools:layout="@layout/fragment_notice" >
-        <action
-            android:id="@+id/action_noticeFragment_to_scheduleFragment"
-            app:destination="@id/scheduleFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/weekScheduleFragment"
-        android:name="com.trendster.campus.ui.fragment.WeekScheduleFragment"
+        android:name="com.trendster.campus.ui.fragment.schedule.WeekScheduleFragment"
         android:label="fragment_week_schedule"
         tools:layout="@layout/fragment_week_schedule" />
     <activity

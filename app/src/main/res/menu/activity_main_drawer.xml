@@ -6,12 +6,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/scheduleFragment"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/ic_home_custom"
             android:checkable="false"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/noticeFragment"
-            android:icon="@drawable/ic_mynotice"
+            android:id="@+id/noticeActivity"
+            android:icon="@drawable/ic_notice"
             android:checkable="false"
             android:title="Notice" />
         <item

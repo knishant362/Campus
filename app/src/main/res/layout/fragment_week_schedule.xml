@@ -8,11 +8,11 @@
     android:background="@color/frag_back"
     >
 
-
     <HorizontalScrollView
         android:id="@+id/dayScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,8 @@
                 android:id="@+id/chipGroupDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="0dp"
                 app:checkedChip="@id/chipMonday"
                 app:selectionRequired="true"
                 app:singleLine="true"
@@ -73,10 +75,12 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.todkars.shimmer.ShimmerRecyclerView
         android:id="@+id/weekRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:shimmer_recycler_item_count="4"
+        app:shimmer_recycler_layout="@layout/schedule_placeholder_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -43,7 +43,6 @@ class SortSubjectFragment : BottomSheetDialogFragment() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            Toast.makeText(requireContext(), "Nishant :$branchChip$ semesterChip", Toast.LENGTH_SHORT).show()
             mainViewModel.sortSubject(requireContext(), auth.currentUser!!.uid, branchChip, semesterChip)
             findNavController().navigateUp()
         }

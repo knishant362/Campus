@@ -8,10 +8,39 @@
     tools:context=".ui.fragment.subjects.subjecthome.CollectionExpandFragment">
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/txtNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/product_sans_medium"
+        android:text="Uploading Soon.."
+        android:textAlignment="center"
+        android:textColor="@color/light_blue_600"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/imgNoData"
+        app:layout_constraintStart_toStartOf="@+id/imgNoData"
+        app:layout_constraintTop_toBottomOf="@+id/imgNoData"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imgNoData"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/ic_person_book"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
+
+    <com.todkars.shimmer.ShimmerRecyclerView
         android:id="@+id/expandRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:shimmer_recycler_item_count="4"
+        app:shimmer_recycler_layout="@layout/schedule_placeholder_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

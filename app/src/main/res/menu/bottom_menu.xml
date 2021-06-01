@@ -19,10 +19,4 @@
         android:icon="@drawable/ic_notification"
         />
 
-<!--    <item-->
-<!--        android:id="@+id/profileFragment"-->
-<!--        android:title="Profile"-->
-<!--        android:icon="@drawable/ic_profile"-->
-<!--        />-->
-
 </menu>

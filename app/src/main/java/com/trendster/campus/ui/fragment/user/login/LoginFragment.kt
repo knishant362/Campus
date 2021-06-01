@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+import cn.xm.weidongjian.progressbuttonlib.ProgressButton
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -25,7 +25,7 @@ class LoginFragment : Fragment() {
     private lateinit var etEmail: TextInputLayout
     private lateinit var etPassword: TextInputLayout
     private lateinit var btnSignup: TextView
-    private lateinit var btnLogin: CircularProgressButton
+    private lateinit var btnLogin: ProgressButton
     private lateinit var txtForgotPass: TextView
     private lateinit var auth: FirebaseAuth
 
@@ -71,7 +71,7 @@ class LoginFragment : Fragment() {
                     return@setOnClickListener
                 }
                 else -> {
-                    btnLogin.startAnimation()
+                    btnLogin.startRotate()
                     auth.signInWithEmailAndPassword(etEmail.editText?.text.toString(), etPassword.editText?.text.toString())
                         .addOnCompleteListener(requireActivity()) { task ->
                             if (task.isSuccessful) {
@@ -92,7 +92,7 @@ class LoginFragment : Fragment() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            btnLogin.stopAnimation()
+            btnLogin.animFinish()
             startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()
         } else {
@@ -100,7 +100,9 @@ class LoginFragment : Fragment() {
                 requireContext(), "Authentication failed.",
                 Toast.LENGTH_SHORT
             ).show()
-            btnLogin.stopAnimation()
+//            btnLogin.stopProgressAnimation()
+            btnLogin.animError()
+            btnLogin.removeDrawable()
         }
     }
 }

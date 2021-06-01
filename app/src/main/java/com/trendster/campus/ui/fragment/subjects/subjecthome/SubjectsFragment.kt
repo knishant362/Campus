@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.todkars.shimmer.ShimmerRecyclerView
 import com.trendster.campus.R
 import com.trendster.campus.adapters.SubjectsAdapter
@@ -43,7 +44,6 @@ class SubjectsFragment : Fragment() {
 
         if (turn == 1) {
             auth.currentUser?.let {
-                Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 mainViewModel.loadRequest(it.uid)
                 turn++
             }
@@ -53,11 +53,19 @@ class SubjectsFragment : Fragment() {
         mainViewModel.readSubjects.observe(
             viewLifecycleOwner,
             {
-                Log.d("MYlist", it.first.size.toString())
-                mAdapter.setData(it.first)
                 binding.txtBS.text = it.second
-                recyclerView.hideShimmer()
-                mAdapter.notifyDataSetChanged()
+                if (it.first.isNotEmpty()) {
+                    Log.d("MYlist", it.first.size.toString())
+                    mAdapter.setData(it.first)
+                    mAdapter.notifyDataSetChanged()
+                    placeHolderVisibility(View.GONE)
+                    recyclerView.hideShimmer()
+                } else {
+                    mAdapter.setData(mutableListOf())
+                    mAdapter.notifyDataSetChanged()
+                    recyclerView.hideShimmer()
+                    placeHolderVisibility(View.VISIBLE)
+                }
             }
         )
 
@@ -68,12 +76,26 @@ class SubjectsFragment : Fragment() {
         mainViewModel.readValues.observe(
             viewLifecycleOwner,
             {
-                recyclerView.showShimmer()
-                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
-                mainViewModel.loadSubjects(it.first, it.second)
+                if (it.first == "null") {
+                    recyclerView.showShimmer()
+                } else {
+                    placeHolderVisibility(View.GONE)
+                    Toast.makeText(requireContext(), "Branch- ${it.first} , Semester: ${it.second}", Toast.LENGTH_SHORT).show()
+                    mainViewModel.loadSubjects(it.first, it.second)
+                }
             }
         )
 
         return binding.root
+    }
+
+    private fun placeHolderVisibility(visibility: Int) {
+        binding.imgNoClasses.visibility = visibility
+        binding.txtNoClasses.visibility = visibility
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

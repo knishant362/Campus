@@ -28,7 +28,7 @@ class SubjectDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivitySubjectDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.hide()
         auth = FirebaseAuth.getInstance()
 
         subjectViewModel = ViewModelProvider(this).get(SubjectViewModel::class.java)
@@ -38,6 +38,9 @@ class SubjectDetailsActivity : AppCompatActivity() {
         val subjectDesc = intent.getStringExtra(SUBJECT_DESC)
 
         Toast.makeText(this, subject, Toast.LENGTH_SHORT).show()
+        binding.closeButton.setOnClickListener {
+            finish()
+        }
 
         if (subject != null && faculty != null && subjectDesc != null) {
             auth.currentUser?.uid?.let { subjectViewModel.userAuthdata(subject, faculty, subjectDesc, it) }
@@ -45,10 +48,5 @@ class SubjectDetailsActivity : AppCompatActivity() {
         }
         navController = findNavController(R.id.nav_host_subject_content)
         binding.subjectBottomNav.setupWithNavController(navController)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

@@ -3,7 +3,7 @@
     <style name="Theme.Campus" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/light_blue_600</item>
-        <item name="colorPrimaryVariant">@color/light_blue_900</item>
+        <item name="colorPrimaryVariant">#B9B8B8</item>
         <item name="colorOnPrimary">@color/white</item>
 <!--        <item name="android:fontFamily">@font/google_sans_med</item>-->
         <!-- Secondary brand color. -->
@@ -26,18 +26,19 @@
     <style name="Theme.Campus.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
-        <item name="android:textColor">@color/light_blue_900</item>
-        <item name="checkedIconTint">@color/light_blue_900</item>
-
+        <item name="chipStrokeColor">@color/light_blue_600</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipBackgroundColor">@color/p_blue_light</item>
+        <item name="android:textColor">@color/light_blue_600</item>
+        <item name="checkedIconTint">@color/light_blue_600</item>n
     </style>
 
     <style name="FloatActionButtonStyle" parent="Widget.Design.FloatingActionButton">
         <item name="shapeAppearanceOverlay">@style/FabShapeStyle</item>
-
     </style>
+
     <style name="FabShapeStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerSize">20%</item>
-
     </style>
 
     <style name="CustomChipStyleSubjects" parent="Widget.MaterialComponents.Chip.Filter">
@@ -46,7 +47,6 @@
         <item name="chipBackgroundColor">@color/p_blue_light</item>
         <item name="android:textColor">@color/light_blue_600</item>
         <item name="checkedIconTint">@color/light_blue_600</item>
-
     </style>
 
 </resources>

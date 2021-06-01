@@ -10,7 +10,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
+        android:background="#FFFFFF"
         android:theme="@style/Theme.Campus.AppBarOverlay">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,10 @@
                 android:layout_height="24dp"
                 android:layout_gravity="right"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/ic_menu"
+                android:src="@drawable/ic_hamburger_mozy"
+                android:padding="1dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -52,10 +55,13 @@
                 android:layout_gravity="right"
                 android:layout_marginEnd="24dp"
                 android:src="@drawable/ic_profile"
+                android:clickable="true"
+                android:padding="1dp"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/light_blue_600" />
+                app:tint="@color/black" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

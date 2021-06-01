@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">Campus</string>
+    <string name="app_name">CampusHub</string>
     <string name="menu_home">Home</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cse">CSE</string>
     <string name="mechanical">Mechanical</string>
     <string name="civil">Civil</string>

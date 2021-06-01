@@ -431,12 +431,13 @@
                     app:drawableTint="@color/light_blue_600" />
 
                 <com.google.android.material.textfield.TextInputLayout
+
+                    android:id="@+id/edtFeedback"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/please_give_your_valuable_feedback"
                     android:layout_below="@id/emailID"
-                    android:id="@+id/edtFeedback"
                     android:background="@color/white"
                     app:endIconTint="#000"
                     android:layout_marginTop="15dp"
@@ -451,7 +452,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/editFeedback"
                         android:inputType="text"
                         android:background="@color/white"
                         android:textColor="#000" />

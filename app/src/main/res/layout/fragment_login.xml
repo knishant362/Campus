@@ -95,7 +95,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                        z<cn.xm.weidongjian.progressbuttonlib.ProgressButton
                             android:id="@+id/btnLogin"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -105,12 +105,13 @@
                             android:backgroundTint="@color/light_blue_600"
                             android:fontFamily="@font/product_sans_regular"
                             android:text="Login"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="@drawable/rounded_button"
+                            android:padding="14dp"
                             android:textColor="@color/white"
                             android:textAllCaps="false"
                             android:textSize="16sp"
-                            app:spinning_bar_width="4dp"
-                            app:spinning_bar_color="#FFF"
-                            app:spinning_bar_padding="6dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />

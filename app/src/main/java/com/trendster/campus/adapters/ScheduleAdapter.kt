@@ -14,7 +14,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.trendster.campus.R
 import com.trendster.campus.databinding.ScheduleRowLayoutBinding
 
-class ScheduleAdapter : RecyclerView.Adapter<ScheduleAdapter.MyViewHolder>() {
+class ScheduleAdapter(val onButtonClick: (String?) -> Unit) : RecyclerView.Adapter<ScheduleAdapter.MyViewHolder>() {
 
     private var schedule = mutableListOf<DocumentSnapshot?>()
 
@@ -31,21 +31,23 @@ class ScheduleAdapter : RecyclerView.Adapter<ScheduleAdapter.MyViewHolder>() {
 
         val data = schedule[position]?.data
         ScheduleRowLayoutBinding.bind(holder.itemView).apply {
-
             val hour = (data?.get("timeStartHr") as Long?)
             val minute = (data?.get("timeStartMin") as Long?)
-
             if (hour != null && minute !== null) {
                 timechip.text = timeString(hour, minute)
                 Log.d("myTime", timeString(hour, minute) as String)
             }
 
-            txtWFaculty.text = data?.get("facultyName") as CharSequence?
-            txtWSubject.text = data?.get("subjectName") as CharSequence?
-            txtWVenue.text = data?.get("roomNo") as CharSequence?
+            txtWFaculty.text = data?.get("facultyName") as String?
+            val subjectName = data?.get("subjectName") as String?
+            txtWSubject.text = subjectName
+            txtWVenue.text = data?.get("roomNo") as String?
 
-            chipLectureType.text = data?.get("TYPE") as CharSequence?
-
+            chipLectureType.text = data?.get("TYPE") as String?
+            chipLectureType.setOnClickListener { v ->
+                if (!subjectName!!.contains("Lab"))
+                onButtonClick(subjectName)
+            }
         }
     }
 

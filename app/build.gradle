@@ -77,6 +77,11 @@ dependencies {
     implementation 'com.alespero:expandable-cardview:0.8'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'br.com.simplepass:loading-button-android:2.2.0'
+//    implementation 'br.com.simplepass:loading-button-android:2.2.0'
+
+//    implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
+
+    implementation 'cn.weidongjian.android:progress-button:0.2'
+
 
 }

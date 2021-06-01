@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+import cn.xm.weidongjian.progressbuttonlib.ProgressButton
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -31,7 +31,7 @@ class SignupFragment : Fragment() {
     private lateinit var etRollNo: TextInputLayout
     private lateinit var etSemester: TextInputLayout
     private lateinit var etPassword: TextInputLayout
-    private lateinit var btnSignup: CircularProgressButton
+    private lateinit var btnSignup: ProgressButton
 
     private var branch = "CSE"
     private var semester = "1"
@@ -99,7 +99,7 @@ class SignupFragment : Fragment() {
                 }
                 else -> {
 
-                    btnSignup.startAnimation()
+                    btnSignup.startRotate()
                     branch = etBranch.editText?.text.toString()
                     semester = etSemester.editText?.text.toString()
 
@@ -113,11 +113,12 @@ class SignupFragment : Fragment() {
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w("SIGNUP", "createUserWithEmail:failure", task.exception)
-                                btnSignup.stopAnimation()
+                                btnSignup.animError()
                                 Toast.makeText(
                                     requireContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                btnSignup.removeDrawable()
                             }
                         }
                 }
@@ -135,7 +136,7 @@ class SignupFragment : Fragment() {
         if (user != null) {
             val accessLevel = "user"
             userViewModel.saveUserData(user.uid, userName, userRollNo, userBranch, userSemester, accessLevel)
-            btnSignup.stopAnimation()
+            btnSignup.animFinish()
             startActivity(Intent(requireContext(), OnboardingActivity::class.java))
             requireActivity().finish()
         }

@@ -66,6 +66,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_star__1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
         <TextView
             android:id="@+id/txtSubName"
             android:layout_width="120dp"

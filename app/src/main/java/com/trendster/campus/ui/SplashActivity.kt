@@ -24,6 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         auth = FirebaseAuth.getInstance()
+        supportActionBar?.hide()
 
         if (auth.currentUser != null) {
             userViewModel.readUserLevel(auth.currentUser!!.uid)
@@ -38,8 +39,6 @@ class SplashActivity : AppCompatActivity() {
             )
         } else
             handleResult(Intent(this, UserActivity::class.java))
-
-        supportActionBar?.hide()
     }
 
     private fun handleResult(myIntent: Intent) {
@@ -50,5 +49,10 @@ class SplashActivity : AppCompatActivity() {
             },
             1500
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

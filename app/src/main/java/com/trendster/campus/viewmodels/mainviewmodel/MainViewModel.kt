@@ -21,9 +21,21 @@ class MainViewModel : ViewModel() {
     private val storageReference = FirebaseStorage.getInstance().reference
     var pdfUploading = MutableLiveData<Boolean>()
 
-//    private val _readAccessLevel = MutableLiveData<String>()
-//    val readAccessLevel: LiveData<String>
-//        get() = _readAccessLevel
+    private val _readUserName = MutableLiveData<String>()
+    val readUserName: LiveData<String>
+        get() = _readUserName
+
+    private val _readFeedbackUpload = MutableLiveData<Boolean>()
+    val readFeedbackUpload: LiveData<Boolean>
+        get() = _readFeedbackUpload
+
+    val _readClassLink = MutableLiveData<String>()
+    val readClassLink: LiveData<String>
+        get() = _readClassLink
+
+    val _readClassLinkWeek = MutableLiveData<String>()
+    val readClassLinkWeek: LiveData<String>
+        get() = _readClassLinkWeek
 
     private val _readAttendance = MutableLiveData<List<DocumentSnapshot?>>()
     val readAttendance: LiveData<List<DocumentSnapshot?>>
@@ -119,12 +131,8 @@ class MainViewModel : ViewModel() {
         val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
 
         /**individual item */
-        val year = today.get(Calendar.YEAR)
-        val month = today.get(Calendar.MONTH)
         val myday = today.get(Calendar.DAY_OF_MONTH)
 
-        val hour = today.get(Calendar.HOUR_OF_DAY)
-        val minute = today.get(Calendar.MINUTE)
         Log.d("myTime11", myday.toString())
         /**individual item */
 
@@ -183,6 +191,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun sortSubject(context: Context, userUID: String, branchChip: String, semesterChip: String) {
+        _readValues.postValue(Pair("null", "null"))
         val data = HashMap<String, String>()
         data[TEMP_USER_BRANCH] = branchChip
         data[TEMP_USER_SEMESTER] = semesterChip
@@ -194,6 +203,38 @@ class MainViewModel : ViewModel() {
             }.addOnFailureListener {
                 Toast.makeText(context, " Some Error Occurred", Toast.LENGTH_SHORT).show()
                 Log.d("saveUserData", it.message!!)
+            }
+    }
+
+    fun fetchUserName(userUID: String) {
+        firestore
+            .collection("Users").document(userUID)
+            .addSnapshotListener { value, error ->
+                _readUserName.postValue(value?.get(USER_NAME) as String)
+            }
+    }
+
+    fun submitFeedBack(userUID: String, userFeedback: String) {
+        val data = HashMap<String, String>()
+        data[USER_FEEDBACK] = userFeedback
+        firestore.collection("Users").document(userUID)
+            .update(data as Map<String, Any>).addOnSuccessListener {
+                _readFeedbackUpload.postValue(true)
+            }.addOnFailureListener {
+                _readFeedbackUpload.postValue(false)
+            }
+    }
+
+    fun fetchClassLink(subjectName: String, type: String) {
+        firestore.collection("Data").document(selectedUserBranch)
+            .collection(selectedUserSemester).document("Subjects")
+            .collection("list").document(subjectName)
+            .addSnapshotListener { value, error ->
+                val data = value?.get(CLASSLINK).toString()
+                if (type == "today")
+                    _readClassLink.postValue(data)
+                else
+                    _readClassLinkWeek.postValue(data)
             }
     }
 }

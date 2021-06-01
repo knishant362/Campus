@@ -29,16 +29,7 @@
         android:id="@+id/signupFragment"
         android:name="com.trendster.campus.ui.fragment.user.signup.SignupFragment"
         android:label="Signup"
-        tools:layout="@layout/fragment_signup" >
-        <action
-            android:id="@+id/action_signupFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/infoFragment"
-        android:name="com.trendster.campus.ui.fragment.user.info.InfoFragment"
-        android:label="User Info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_signup" />
     <fragment
         android:id="@+id/forgotFragment"
         android:name="com.trendster.campus.ui.fragment.user.forgot.ForgotFragment"

@@ -34,6 +34,7 @@ class UserViewModel : ViewModel() {
         data[TEMP_USER_BRANCH] = userBranch
         data[TEMP_USER_SEMESTER] = userSemester
         data[ACCESS_LEVEL] = accessLevel
+        data[USER_FEEDBACK] = "No Feedback submitted yet."
 
         firestore.collection("Users").document(userUID)
             .set(data).addOnSuccessListener {
